@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectThrower : MonoBehaviour {
@@ -14,10 +15,17 @@ public class ObjectThrower : MonoBehaviour {
 	private int _currentObjectIndex;
 
 	private void Start() {
-		InvokeRepeating(nameof(OnTimerElapsed), 0, throwDelay);
+		StartCoroutine(ThrowRandomObjects());
 	}
 
-	private void OnTimerElapsed() {
+	private IEnumerator ThrowRandomObjects() {
+		while (true) {
+			ThrowRandomObject();
+			yield return new WaitForSeconds(throwDelay);
+		}
+	}
+
+	private void ThrowRandomObject() {
 		var centerPosition = transform.position;
 		var prefab = objectsToThrow[_currentObjectIndex];
 
