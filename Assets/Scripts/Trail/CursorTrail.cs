@@ -6,8 +6,8 @@ public class CursorTrail : MonoBehaviour
 {
 	[SerializeField] private LineRenderer trailPrefab = null;
     [SerializeField] private Camera cam; 
-    [SerializeField] private float clearSpeed = 1;
-    [SerializeField] private float distanceFromCamera = 1;
+    [SerializeField] private float clearSpeed = 17;
+    [SerializeField] private float distanceFromCamera = 2;
 
     private LineRenderer _currentTrail;
     private List<Vector3> _points = new List<Vector3>();
@@ -43,7 +43,6 @@ public class CursorTrail : MonoBehaviour
     private void CreateCurrentTrail()
     {
         _currentTrail = Instantiate(trailPrefab);
-        _currentTrail.transform.SetParent(transform, true);
     }
 
     private void AddPoint()
@@ -81,7 +80,7 @@ public class CursorTrail : MonoBehaviour
             }
             clearDistance -= distance;
         }
-    }
+	}
 
     void OnDisable()
     {
