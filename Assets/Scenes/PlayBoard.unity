@@ -156,10 +156,13 @@ MonoBehaviour:
   - {fileID: 7947211172428535512, guid: a3116b5f6553b77419f6702c89446f35, type: 3}
   - {fileID: 2758476029373651663, guid: f6b9af500daf46a499b2789cd6264a6a, type: 3}
   - {fileID: 8445322760156667860, guid: f8eaa19ddc4d79048bf2a90b8588e54b, type: 3}
-  throwForce: 10
+  launchedObjectsSize: 4
+  randomThrowPositionXStart: -7
+  randomThrowPositionXEnd: 7
+  randomAngleMax: 20
+  throwForceMin: 10
+  throwForceMax: 15
   throwDelay: 1
-  randomLaunchPositionXStart: -7
-  randomLaunchPositionXEnd: 7
 --- !u!4 &505129482
 Transform:
   m_ObjectHideFlags: 0
@@ -168,7 +171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505129480}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -10, z: -3}
+  m_LocalPosition: {x: 0, y: -8, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
