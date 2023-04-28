@@ -11,6 +11,7 @@ namespace DifficultyMenu
 		{
 			// Global.difficulty = difficulty; 
 			SceneManager.LoadScene("PlayBoard");
+			GameObject.Find("MenuMusic").GetComponent<AudioSource>().Pause();
 		}
 
 		public void GoToMainMenu()
