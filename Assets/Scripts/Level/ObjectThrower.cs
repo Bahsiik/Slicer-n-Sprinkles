@@ -25,8 +25,6 @@ public class ObjectThrower : MonoBehaviour {
 			for (var i = 0; i < randomQuantity; i++) ThrowRandomObject();
 
 			var randomDelay = MathUtils.GenerateRandomNumber(0.8f, throwMaxDelay, 0.8f);
-
-			Debug.Log($"Throwing {randomQuantity} objects with a delay of {randomDelay} seconds");
 			yield return new WaitForSeconds(randomDelay);
 		}
 	}
