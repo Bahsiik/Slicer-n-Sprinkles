@@ -7,10 +7,11 @@ public class ObjectThrower : MonoBehaviour {
 	public float launchedObjectsSize = 4f;
 	public float randomThrowPositionXStart = -7;
 	public float randomThrowPositionXEnd = 7;
-	public float randomAngleMax = 25f;
-	public float throwForceMin = 10f;
+	public float randomAngleMax = 20f;
+	public float throwForceMin = 10.5f;
 	public float throwForceMax = 15f;
-	public float throwDelay = 1f;
+	public float throwMaxDelay = 4f;
+	public int throwMaxGroupQuantity = 5;
 
 	private int _currentObjectIndex;
 
@@ -20,8 +21,13 @@ public class ObjectThrower : MonoBehaviour {
 
 	private IEnumerator ThrowRandomObjects() {
 		while (true) {
-			ThrowRandomObject();
-			yield return new WaitForSeconds(throwDelay);
+			var randomQuantity = MathUtils.GenerateRandomNumber(1, throwMaxGroupQuantity, 0.3f);
+			for (var i = 0; i < randomQuantity; i++) ThrowRandomObject();
+
+			var randomDelay = MathUtils.GenerateRandomNumber(0.8f, throwMaxDelay, 0.8f);
+
+			Debug.Log($"Throwing {randomQuantity} objects with a delay of {randomDelay} seconds");
+			yield return new WaitForSeconds(randomDelay);
 		}
 	}
 

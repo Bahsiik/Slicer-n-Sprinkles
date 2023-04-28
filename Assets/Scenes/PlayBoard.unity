@@ -160,9 +160,10 @@ MonoBehaviour:
   randomThrowPositionXStart: -7
   randomThrowPositionXEnd: 7
   randomAngleMax: 20
-  throwForceMin: 10
+  throwForceMin: 10.5
   throwForceMax: 15
-  throwDelay: 1
+  throwMaxDelay: 4
+  throwMaxGroupQuantity: 5
 --- !u!4 &505129482
 Transform:
   m_ObjectHideFlags: 0
