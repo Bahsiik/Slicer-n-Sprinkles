@@ -5,12 +5,12 @@ namespace MainMenu
 {
     public class MainMenuButtons : MonoBehaviour
     {
-        public void StartGameButton()
+        public void GotToDifficultyMenu()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("DifficultySelectionMenu");
         }
         
-        public void QuitGameButton()
+        public void QuitGame()
         {
             Debug.Log("Quit");
             Application.Quit();
