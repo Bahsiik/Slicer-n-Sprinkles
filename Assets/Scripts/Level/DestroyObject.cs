@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class DestroyObject : MonoBehaviour
 {
-	private float _destroyPositionY = -8;
+	private float _destroyPositionY = -8f;
+	private Collider _objectCollider;
+	private Rigidbody _objectRigidbody;
 		
 	void Update()
 	{
@@ -14,9 +16,13 @@ public class DestroyObject : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-		
-		// if mouse is down on object, destroy
-		// game object with collision box/sphere collider that follows mouse and destroy item when mouse is down
-		// and variable if mouse button is down
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			Destroy(gameObject);
+		}
 	}
 }
