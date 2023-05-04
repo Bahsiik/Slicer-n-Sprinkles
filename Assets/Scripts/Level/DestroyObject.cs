@@ -8,7 +8,13 @@ public class DestroyObject : MonoBehaviour
 	private float _destroyPositionY = -8f;
 	private Collider _objectCollider;
 	private Rigidbody _objectRigidbody;
-		
+	private ParticleSystem _juiceParticleSystem;
+
+	private void Awake()
+	{
+		_juiceParticleSystem = GetComponentInChildren<ParticleSystem>();
+	}
+
 	void Update()
 	{
 		// Destroy when out of bounds
@@ -22,6 +28,9 @@ public class DestroyObject : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
+			// not working since destroyed right away
+			_juiceParticleSystem.Play();
+			// faire drop les objets coupés en deux au lieu de destroy
 			Destroy(gameObject);
 		}
 	}
