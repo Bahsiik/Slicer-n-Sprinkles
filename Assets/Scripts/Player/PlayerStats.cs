@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats : MonoBehaviour
+{
 	public TextUpdater pointsText;
 
 	public int lives = 5;
@@ -16,7 +17,8 @@ public class PlayerStats : MonoBehaviour {
 		}
 	}
 
-	private void Awake() {
+	private void Awake()
+	{
 		Points = 0;
 	}
 
@@ -24,7 +26,8 @@ public class PlayerStats : MonoBehaviour {
 	///     This method is called when the script is loaded or a value is changed in the inspector (Called in the editor only).
 	///     We use this trick to update the points text in the editor as it will call the setter of the Points property.
 	/// </summary>
-	private void OnValidate() {
+	private void OnValidate()
+	{
 		if (!pointsText.IsAwake) return;
 		Points = points;
 	}

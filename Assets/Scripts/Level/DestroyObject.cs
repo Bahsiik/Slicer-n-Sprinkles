@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using JetBrains.Annotations;
 using UnityEngine;
 
 public class DestroyObject : MonoBehaviour
 {
-	private float _destroyPositionY = -8f;
+	private readonly float _destroyPositionY = -8f;
+	private ParticleSystem _juiceParticleSystem;
 	private Collider _objectCollider;
 	private Rigidbody _objectRigidbody;
-	private ParticleSystem _juiceParticleSystem;
 
 	private void Awake()
 	{
 		_juiceParticleSystem = GetComponentInChildren<ParticleSystem>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		// Destroy when out of bounds
 		if (transform.position.y < _destroyPositionY)
@@ -24,7 +22,7 @@ public class DestroyObject : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter([NotNull] Collider other)
 	{
 		if (other.CompareTag("Player"))
 		{

@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TogglePauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel;
-	public static bool IsPaused = false;
-	
+	public static bool IsPaused;
+	public GameObject pausePanel;
+
 	public void Start()
 	{
 		pausePanel.SetActive(false);
@@ -30,22 +27,15 @@ public class TogglePauseMenu : MonoBehaviour
 		Time.timeScale = pausePanel.activeSelf ? 0f : 1f;
 		IsPaused = pausePanel.activeSelf;
 	}
-	
-	public void GoToMainMenu()
-	{
-		SceneManager.LoadScene("MainMenu");
-	}
-	
+
+	public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
+
 	public void Resume()
 	{
 		pausePanel.SetActive(false);
 		Time.timeScale = 1f;
 		IsPaused = false;
 	}
-	
-	public void QuitGame()
-	{
-		Debug.Log("Quit");
-		Application.Quit();
-	}
+
+	public void QuitGame() => Application.Quit();
 }

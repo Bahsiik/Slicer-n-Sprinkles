@@ -2,7 +2,8 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MathUtils {
+public static class MathUtils
+{
 	/// <summary>
 	///     Generates a random number of a specified numeric type between a specified minimum and maximum value, with a bias towards certain values
 	///     based on the bias parameter.
@@ -18,7 +19,8 @@ public class MathUtils {
 	///     A random number of the specified type between the specified minimum and maximum values, biased towards certain values based on
 	///     the bias parameter.
 	/// </returns>
-	public static T GenerateRandomNumber<T>(T min, T max, float bias) where T : struct, IComparable, IConvertible, IFormattable {
+	public static T GenerateRandomNumber<T>(T min, T max, float bias) where T : struct, IComparable, IConvertible, IFormattable
+	{
 		// Convert the minimum and maximum values to floats.
 		var floatMin = Convert.ToSingle(min);
 		var floatMax = Convert.ToSingle(max);

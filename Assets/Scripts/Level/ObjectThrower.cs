@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectThrower : MonoBehaviour {
+public class ObjectThrower : MonoBehaviour
+{
 	public List<GameObject> objectsToThrow;
 	public float launchedObjectsSize = 4f;
 	public float randomThrowPositionXStart = -7;
@@ -15,12 +16,15 @@ public class ObjectThrower : MonoBehaviour {
 
 	private int _currentObjectIndex;
 
-	private void Start() {
+	private void Start()
+	{
 		StartCoroutine(ThrowRandomObjects());
 	}
 
-	private IEnumerator ThrowRandomObjects() {
-		while (true) {
+	private IEnumerator ThrowRandomObjects()
+	{
+		while (true)
+		{
 			var randomQuantity = MathUtils.GenerateRandomNumber(1, throwMaxGroupQuantity, 0.3f);
 			for (var i = 0; i < randomQuantity; i++) ThrowRandomObject();
 
@@ -29,7 +33,8 @@ public class ObjectThrower : MonoBehaviour {
 		}
 	}
 
-	private void ThrowRandomObject() {
+	private void ThrowRandomObject()
+	{
 		var centerPosition = transform.position;
 		var prefab = objectsToThrow[_currentObjectIndex];
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioSourceSingleton : MonoBehaviour
@@ -7,6 +5,6 @@ public class AudioSourceSingleton : MonoBehaviour
 
 	private void Awake()
 	{
-		DontDestroyOnLoad(this.gameObject);
+		DontDestroyOnLoad(gameObject);
 	}
 }
