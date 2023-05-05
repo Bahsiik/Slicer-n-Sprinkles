@@ -15,6 +15,7 @@ public class ObjectsCollision : MonoBehaviour
 		// Destroy when out of bounds
 		if (transform.position.y < DestroyPositionY)
 		{
+			PlayerStats.Instance.Lives--;
 			Destroy(gameObject);
 		}
 	}

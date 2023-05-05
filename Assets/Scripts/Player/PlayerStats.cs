@@ -2,12 +2,32 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+	private static PlayerStats _instance;
+
+	public TextUpdater livesText;
 	public TextUpdater pointsText;
 
-	public int lives = 5;
+	[SerializeField]
+	private int lives;
 
 	[SerializeField]
 	private int points;
+
+	public static PlayerStats Instance {
+		get {
+			if (_instance == null) _instance = FindObjectOfType<PlayerStats>();
+			return _instance;
+		}
+		private set => _instance = value;
+	}
+
+	public int Lives {
+		get => lives;
+		set {
+			lives = value;
+			livesText.UpdateText(lives);
+		}
+	}
 
 	public int Points {
 		get => points;
@@ -20,6 +40,7 @@ public class PlayerStats : MonoBehaviour
 	private void Awake()
 	{
 		Points = 0;
+		Lives = 5;
 	}
 
 	/// <summary>
