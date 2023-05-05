@@ -126,7 +126,7 @@ Closes is used to close issues automatically when the commit is merged, each com
 
 Commit regexp:
 ```regexp
-(chore|docs|feat|fix|perf|refactor|style|tweak)(\(.*\)): [A-Z].*\.(\s+Closes #\d+(, closes #\d+)*)?s
+(chore|docs|feat|fix|perf|refactor|style|tweak)(\(.*\)): [A-Z].*\.(\s+Closes #\d+(, closes #\d+)*)?
 ```
 
 **Example:**
