@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1369349383668725267}
   - component: {fileID: -8803098505810404263}
   - component: {fileID: 4792062158958737744}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: egg
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4359605977240308027}
   - component: {fileID: 4180965475036855654}
   - component: {fileID: 1906636171267155162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Juice
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5924391296557666534}
   - component: {fileID: 6898419098729334566}
   - component: {fileID: 2054599601508265829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Juice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 1964379205294435859}
   - component: {fileID: -3943923317944378149}
   - component: {fileID: -4429091324639535048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lemon
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
