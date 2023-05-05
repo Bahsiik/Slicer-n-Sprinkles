@@ -1,3 +1,27 @@
 using UnityEngine;
 
-public class ObjectsCollision : MonoBehaviour { }
+public class ObjectsCollision : MonoBehaviour
+{
+	private const float DestroyPositionY = -8f;
+	private ParticleSystem _juiceParticleSystem;
+
+	private void Awake()
+	{
+		_juiceParticleSystem = GetComponentInChildren<ParticleSystem>();
+	}
+
+	private void Update()
+	{
+		// Destroy when out of bounds
+		if (transform.position.y < DestroyPositionY)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	public void Destroy()
+	{
+		_juiceParticleSystem.Play();
+		Destroy(gameObject);
+	}
+}
