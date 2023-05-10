@@ -23,6 +23,7 @@ public class ObjectsCollision : MonoBehaviour
 	public void Destroy()
 	{
 		_juiceParticleSystem.Play();
-		Destroy(gameObject);
+		GetComponent<MeshRenderer>().enabled = false;
+		GetComponent<Collider>().enabled = false;
 	}
 }
