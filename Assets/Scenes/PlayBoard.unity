@@ -772,6 +772,8 @@ MonoBehaviour:
   - {fileID: 7947211172428535512, guid: a3116b5f6553b77419f6702c89446f35, type: 3}
   - {fileID: 2758476029373651663, guid: f6b9af500daf46a499b2789cd6264a6a, type: 3}
   - {fileID: 8445322760156667860, guid: f8eaa19ddc4d79048bf2a90b8588e54b, type: 3}
+  - {fileID: 5749031338187309302, guid: 5fd9f3e496f213c4d98596129d030601, type: 3}
+  - {fileID: 6622485247026827674, guid: 9f27a82db2d42b94eaf3730200743f0e, type: 3}
   launchedObjectsSize: 4
   randomThrowPositionXStart: -7
   randomThrowPositionXEnd: 7
