@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObjectsCollision : MonoBehaviour
 {
 	private const float DestroyPositionY = -8f;
+	public bool isDestroyed;
 	private ParticleSystem _juiceParticleSystem;
 
 	private void Awake()
@@ -13,7 +14,7 @@ public class ObjectsCollision : MonoBehaviour
 	private void Update()
 	{
 		// Destroy when out of bounds
-		if (transform.position.y < DestroyPositionY)
+		if (transform.position.y < DestroyPositionY && !isDestroyed)
 		{
 			PlayerStats.Instance.Lives--;
 			Destroy(gameObject);
@@ -25,5 +26,6 @@ public class ObjectsCollision : MonoBehaviour
 		_juiceParticleSystem.Play();
 		GetComponent<MeshRenderer>().enabled = false;
 		GetComponent<Collider>().enabled = false;
+		isDestroyed = true;
 	}
 }
