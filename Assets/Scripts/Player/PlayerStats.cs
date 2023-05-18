@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour
 		}
 	}
 
-	private void Awake()
+	private void Start()
 	{
 		Points = 0;
 		Lives = 5;
