@@ -4,16 +4,21 @@ using UnityEngine;
 public class DestroyObject : MonoBehaviour
 {
 	public PlayerStats playerStats;
+	public Slice slice;
+
+	private void Awake()
+	{
+		slice = GetComponent<Slice>();
+	}
 
 	private void OnTriggerEnter([NotNull] Collider other)
 	{
-		if (other.CompareTag("Ingredient"))
-		{
-			var objectsCollision = other.GetComponent<ObjectsCollision>();
-			if (objectsCollision == null) return;
+		if (!other.CompareTag("Ingredient") || !slice.isSlicing) return;
 
-			objectsCollision.Destroy();
-			playerStats.Points++;
-		}
+		var objectsCollision = other.GetComponent<ObjectsCollision>();
+		if (objectsCollision == null) return;
+
+		objectsCollision.Destroy();
+		playerStats.Points++;
 	}
 }

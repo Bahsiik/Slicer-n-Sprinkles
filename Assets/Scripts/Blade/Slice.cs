@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Slice : MonoBehaviour
 {
+	public bool isSlicing;
 	public float minSliceVelocity = 0.01f;
 	private Collider _bladeCollider;
-	private bool _isSlicing;
 	private Camera _mainCamera;
 	private TrailRenderer _trailRenderer;
 
@@ -19,10 +19,7 @@ public class Slice : MonoBehaviour
 
 	private void Update()
 	{
-		if (TogglePauseMenu.IsPaused)
-		{
-			return;
-		}
+		if (TogglePauseMenu.IsPaused) return;
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -30,7 +27,7 @@ public class Slice : MonoBehaviour
 		} else if (Input.GetMouseButtonUp(0))
 		{
 			StopSlicing();
-		} else if (_isSlicing)
+		} else if (isSlicing)
 		{
 			ContinueSlicing();
 		}
@@ -52,7 +49,7 @@ public class Slice : MonoBehaviour
 		newPosition.z = -3f;
 		transform.position = newPosition;
 
-		_isSlicing = true;
+		isSlicing = true;
 		_bladeCollider.enabled = true;
 		_trailRenderer.Clear();
 		_trailRenderer.enabled = true;
@@ -60,7 +57,7 @@ public class Slice : MonoBehaviour
 
 	private void StopSlicing()
 	{
-		_isSlicing = false;
+		isSlicing = false;
 		_bladeCollider.enabled = false;
 		_trailRenderer.enabled = false;
 	}
