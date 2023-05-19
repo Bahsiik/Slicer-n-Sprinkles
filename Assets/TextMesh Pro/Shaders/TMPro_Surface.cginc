@@ -62,9 +62,9 @@ void PixShader(Input input, inout SurfaceOutput o)
 	float3 delta = float3(1.0 / _TextureWidth, 1.0 / _TextureHeight, 0.0);
 
 	float4 smp4x = {tex2D(_MainTex, input.uv_MainTex - delta.xz).a,
-					tex2D(_MainTex, input.uv_MainTex + delta.xz).a,
-					tex2D(_MainTex, input.uv_MainTex - delta.zy).a,
-					tex2D(_MainTex, input.uv_MainTex + delta.zy).a };
+		tex2D(_MainTex, input.uv_MainTex + delta.xz).a,
+		tex2D(_MainTex, input.uv_MainTex - delta.zy).a,
+		tex2D(_MainTex, input.uv_MainTex + delta.zy).a};
 
 	// Face Normal
 	float3 n = GetSurfaceNormal(smp4x, input.param.x);
