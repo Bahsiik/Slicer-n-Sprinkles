@@ -1,14 +1,15 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Slice : MonoBehaviour
 {
 	public bool isSlicing;
 	public float minSliceVelocity = 0.01f;
+	public PlayerStats playerStats;
 	private Collider _bladeCollider;
 	private Camera _mainCamera;
 	private TrailRenderer _trailRenderer;
-
-	public Vector3 direction {get; private set;}
+	private Vector3 Direction {get; set;}
 
 	private void Awake()
 	{
@@ -43,6 +44,17 @@ public class Slice : MonoBehaviour
 		StopSlicing();
 	}
 
+	private void OnTriggerEnter([NotNull] Collider other)
+	{
+		if (!other.CompareTag("Ingredient") || !isSlicing) return;
+
+		var objectsCollision = other.GetComponent<ObjectsCollision>();
+		if (objectsCollision == null) return;
+
+		objectsCollision.Destroy();
+		playerStats.Points++;
+	}
+
 	private void StartSlicing()
 	{
 		var newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -67,9 +79,9 @@ public class Slice : MonoBehaviour
 		var newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
 		newPosition.z = -3f;
 
-		direction = newPosition - transform.position;
+		Direction = newPosition - transform.position;
 
-		var velocity = direction.magnitude / Time.deltaTime;
+		var velocity = Direction.magnitude / Time.deltaTime;
 		_bladeCollider.enabled = velocity > minSliceVelocity;
 
 		transform.position = newPosition;
