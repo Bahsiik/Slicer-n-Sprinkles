@@ -30,7 +30,7 @@
 		throwMaxGroupQuantity = 12
 	};
 
-	public static Difficulty selectedDifficulty = medium;
+	public static Difficulty selectedDifficulty;
 
 	public float bombProbability;
 	public float comboTime;
