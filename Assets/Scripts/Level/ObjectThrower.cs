@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectThrower : MonoBehaviour
 {
+	private AudioManager _audioManager;
+	
 	public List<GameObject> objectsToThrow;
 	public GameObject bombPrefab;
 	public float randomThrowPositionXStart = -7;
@@ -13,6 +15,11 @@ public class ObjectThrower : MonoBehaviour
 	private readonly Difficulty _diff = Difficulty.selectedDifficulty;
 	private int _currentObjectIndex;
 
+	private void Awake()
+	{
+		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+	}
+	
 	private void Start()
 	{
 		StartCoroutine(ThrowRandomObjects());
@@ -56,6 +63,6 @@ public class ObjectThrower : MonoBehaviour
 
 		_currentObjectIndex = (_currentObjectIndex + 1) % objectsToThrow.Count;
 		
-		AudioManager.Instance.PlaySFX("Throw");
+		_audioManager.PlaySFX("Throw");
 	}
 }

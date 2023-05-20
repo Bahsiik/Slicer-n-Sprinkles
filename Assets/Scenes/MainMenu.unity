@@ -494,17 +494,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 342345603}
   m_HandleRect: {fileID: 1517606747}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1181093904}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: MainVolume
-        m_Mode: 4
+        m_MethodName: SetMasterVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -539,10 +539,10 @@ AudioSource:
   m_GameObject: {fileID: 175853365}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2464046671767660929, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.145
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1233,7 +1233,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563017875}
-  - component: {fileID: 563017877}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1265,21 +1264,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -61}
   m_SizeDelta: {x: 480, y: 620}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &563017877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563017874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  buttonClickSound: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
-  buttonHoverSound: {fileID: 8300000, guid: cf11a934967b23340a4d22619832082c, type: 3}
 --- !u!1 &577034253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,17 +1863,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 647531056}
   m_HandleRect: {fileID: 523535302}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1181093904}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: MusicVolume
-        m_Mode: 4
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2392,10 +2376,10 @@ AudioSource:
   m_GameObject: {fileID: 1150512220}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7962064111595385245, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2580,6 +2564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181093905}
   - component: {fileID: 1181093904}
+  - component: {fileID: 1181093906}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2600,9 +2585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 1780886312}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  mainSlider: {fileID: 0}
+  _audioMixer: {fileID: 24100000, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
+  _musicSlider: {fileID: 758262202}
+  _sfxSlider: {fileID: 1481964763}
+  _masterSlider: {fileID: 135615836}
 --- !u!4 &1181093905
 Transform:
   m_ObjectHideFlags: 0
@@ -2618,6 +2604,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1181093906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181093903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a4fde9336148944869dd89a3196e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 1780886312}
 --- !u!1 &1188829294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2770,7 +2769,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: ClickSound
           m_Mode: 1
@@ -2786,7 +2785,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: HoverSound
           m_Mode: 1
@@ -3430,9 +3429,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1434972497}
   - component: {fileID: 1434972496}
+  - component: {fileID: 1434972498}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3449,14 +3449,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034d05b80b01ee40b3c4524e9be4a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds:
+  _musicSource: {fileID: 1150512221}
+  _sfxSource: {fileID: 175853366}
+  _musicClips:
   - soundName: Theme
     clip: {fileID: 8300000, guid: 2cebe5ef59f447d4d803665e3ecf1a2f, type: 3}
-  sfxSounds:
-  - soundName: Button
-    clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
-  musicSource: {fileID: 1150512221}
-  sfxSource: {fileID: 175853366}
+  _sfxClips:
+  - soundName: Button Click
+    clip: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
+  - soundName: Button Hover
+    clip: {fileID: 8300000, guid: cf11a934967b23340a4d22619832082c, type: 3}
 --- !u!4 &1434972497
 Transform:
   m_ObjectHideFlags: 0
@@ -3474,6 +3476,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1434972498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434972495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 175853366}
 --- !u!1 &1473126960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,7 +3574,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1181093906}
         m_TargetAssemblyTypeName: MainMenu.MainMenuButtons, Assembly-CSharp
         m_MethodName: GotToDifficultyMenu
         m_Mode: 1
@@ -3626,7 +3641,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: ClickSound
           m_Mode: 1
@@ -3642,7 +3657,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: HoverSound
           m_Mode: 1
@@ -3738,17 +3753,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 1154565719}
   m_HandleRect: {fileID: 129912147}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1181093904}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SFXVolume
-        m_Mode: 4
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3985,7 +4000,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: ClickSound
           m_Mode: 1
@@ -4001,7 +4016,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: HoverSound
           m_Mode: 1
@@ -4245,6 +4260,7 @@ GameObject:
   - component: {fileID: 2012147561}
   - component: {fileID: 2012147560}
   - component: {fileID: 2012147559}
+  - component: {fileID: 2012147562}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -4367,6 +4383,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012147557}
   m_CullTransparentMesh: 1
+--- !u!114 &2012147562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012147557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1434972498}
+          m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
+          m_MethodName: ClickSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1434972498}
+          m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
+          m_MethodName: HoverSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2014502661
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,7 +4617,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: ClickSound
           m_Mode: 1
@@ -4572,7 +4633,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 563017877}
+        - m_Target: {fileID: 1434972498}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: HoverSound
           m_Mode: 1

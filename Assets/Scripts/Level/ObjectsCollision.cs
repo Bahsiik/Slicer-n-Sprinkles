@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ObjectsCollision : MonoBehaviour
 {
+	AudioManager _audioManager;
+	
 	private const float DestroyPositionY = -8f;
 	public bool isDestroyed;
 	private ParticleSystem _juiceParticleSystem;
@@ -9,6 +11,7 @@ public class ObjectsCollision : MonoBehaviour
 	private void Awake()
 	{
 		_juiceParticleSystem = GetComponentInChildren<ParticleSystem>();
+		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 	}
 
 	private void Update()
@@ -25,6 +28,6 @@ public class ObjectsCollision : MonoBehaviour
 		GetComponent<MeshRenderer>().enabled = false;
 		GetComponent<Collider>().enabled = false;
 		isDestroyed = true;
-		AudioManager.Instance.PlaySFX("Slice");
+		_audioManager.PlaySFX("Slice");
 	}
 }

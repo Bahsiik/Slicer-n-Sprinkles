@@ -1,21 +1,26 @@
+using System;
 using UnityEngine;
 
 namespace Buttons
 {
 	public class ButtonsFX : MonoBehaviour
 	{
-		public AudioSource audioSource;
-		public AudioClip buttonClickSound;
-		public AudioClip buttonHoverSound;
+		AudioManager _audioManager;
+		[SerializeField] private AudioSource _audioSource;
+
+		private void Awake()
+		{
+			_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+		}
 
 		public void ClickSound()
 		{
-			if (!audioSource.isPlaying) audioSource.PlayOneShot(buttonClickSound);
+			if (!_audioSource.isPlaying) _audioManager.PlaySFX("Button Click");
 		}
 
 		public void HoverSound()
 		{
-			if (!audioSource.isPlaying) audioSource.PlayOneShot(buttonHoverSound);
+			if (!_audioSource.isPlaying) _audioManager.PlaySFX("Button Hover");
 		}
 	}
 }

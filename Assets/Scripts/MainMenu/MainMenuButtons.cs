@@ -15,7 +15,6 @@ namespace MainMenu
 		
 		public void Start()
 		{
-			settingsPanel.GetComponent<SettingsMenu>().Start();
 			settingsPanel.SetActive(false);
 		}
 		
@@ -39,10 +38,7 @@ namespace MainMenu
 		{
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
-				if (!IsSettingsOpen)
-				{
-					ToggleSettings();
-				}
+				ToggleSettings();
 			}
 		}
 	}
