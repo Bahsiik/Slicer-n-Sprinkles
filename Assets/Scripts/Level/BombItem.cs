@@ -17,6 +17,8 @@ public class BombItem : MonoBehaviour
 	{
 		if (!other.CompareTag("Player")) return;
 
+		SaveGame.SaveIntoLatestSlot();
+
 		// TODO : Add game over screen
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}

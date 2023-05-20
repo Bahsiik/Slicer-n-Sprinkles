@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 
 	public TextUpdater livesText;
 	public TextUpdater pointsText;
+	public int fruitsSliced;
 
 	[SerializeField]
 	private int lives;
