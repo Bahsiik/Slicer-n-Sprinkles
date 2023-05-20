@@ -30,7 +30,11 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			if (!settingsPanel.activeSelf)
+			if (IsSettingsOpen)
+			{
+				settingsPanel.SetActive(false);
+			}
+			else
 			{
 				TogglePause();
 			}
