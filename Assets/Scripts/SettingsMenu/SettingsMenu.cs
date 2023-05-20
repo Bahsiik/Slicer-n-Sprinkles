@@ -15,6 +15,12 @@ public class SettingsMenu : MonoBehaviour
 		settingsPanel.SetActive(false);
 	}
 	
+	public void ToggleSettings()
+	{
+		settingsPanel.SetActive(!settingsPanel.activeSelf);
+		AudioManager.Instance.PlaySFX("Button");
+	}
+	
 	public void ToggleMusic()
 	{
 		AudioManager.Instance.ToggleMusic();

@@ -4,9 +4,13 @@ using UnityEngine.SceneManagement;
 public class TogglePauseMenu : MonoBehaviour
 {
 	public static bool IsPaused;
-	private static bool _isSettingsOpen;
 	public GameObject pausePanel;
 	public GameObject settingsPanel;
+	private bool IsSettingsOpen
+	{
+		get => settingsPanel.activeSelf;
+		set => settingsPanel.SetActive(value);
+	}
 
 	public void Start()
 	{
@@ -19,12 +23,7 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			if (settingsPanel.activeSelf)
-			{
-				settingsPanel.SetActive(false);
-				_isSettingsOpen = false;
-			}
-			else
+			if (!settingsPanel.activeSelf)
 			{
 				TogglePause();
 			}
@@ -54,11 +53,4 @@ public class TogglePauseMenu : MonoBehaviour
 	}
 
 	public void QuitGame() => Application.Quit();
-	
-	public void ToggleSettings()
-	{
-		settingsPanel.SetActive(!settingsPanel.activeSelf);
-		_isSettingsOpen = settingsPanel.activeSelf;
-		AudioManager.Instance.PlaySFX("Button");
-	}
 }

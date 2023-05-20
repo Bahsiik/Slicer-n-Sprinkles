@@ -5232,8 +5232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1100437860}
-        m_TargetAssemblyTypeName: TogglePauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1100437862}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: ToggleSettings
         m_Mode: 1
         m_Arguments:
