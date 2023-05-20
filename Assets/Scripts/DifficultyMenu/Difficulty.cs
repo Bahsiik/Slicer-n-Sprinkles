@@ -1,6 +1,6 @@
 ﻿public record Difficulty
 {
-	public static Difficulty easy = new() {
+	public static readonly Difficulty Easy = new() {
 		bombProbability = 0.05f,
 		comboTime = 0.4f,
 		launchedObjectsSize = 5f,
@@ -10,7 +10,7 @@
 		throwMaxGroupQuantity = 5
 	};
 
-	public static Difficulty medium = new() {
+	public static readonly Difficulty Medium = new() {
 		bombProbability = 0.1f,
 		comboTime = 0.3f,
 		launchedObjectsSize = 4f,
@@ -20,7 +20,7 @@
 		throwMaxGroupQuantity = 8
 	};
 
-	public static Difficulty hard = new() {
+	public static readonly Difficulty Hard = new() {
 		bombProbability = 0.18f,
 		comboTime = 0.2f,
 		launchedObjectsSize = 3f,
@@ -30,7 +30,7 @@
 		throwMaxGroupQuantity = 12
 	};
 
-	public static Difficulty selectedDifficulty;
+	public static Difficulty selectedDifficulty = Medium;
 
 	public float bombProbability;
 	public float comboTime;
