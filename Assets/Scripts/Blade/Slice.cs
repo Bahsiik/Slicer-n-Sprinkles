@@ -1,3 +1,4 @@
+using System.Timers;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -6,7 +7,12 @@ public class Slice : MonoBehaviour
 	public bool isSlicing;
 	public float minSliceVelocity = 0.01f;
 	public PlayerStats playerStats;
+	public ComboText comboText;
+	public int sliceCombo;
+	private readonly Vector3 _screenCenter = new(Screen.width / 2f, Screen.height / 2f);
+	private readonly Timer _sliceComboTimer = new(250);
 	private Collider _bladeCollider;
+	private bool _comboFinished;
 	private Camera _mainCamera;
 	private TrailRenderer _trailRenderer;
 	private Vector3 Direction {get; set;}
@@ -16,11 +22,25 @@ public class Slice : MonoBehaviour
 		_bladeCollider = GetComponent<Collider>();
 		_mainCamera = Camera.main;
 		_trailRenderer = GetComponentInChildren<TrailRenderer>();
+
+		_sliceComboTimer.Elapsed += (_, _) => {
+			_sliceComboTimer.Stop();
+			_comboFinished = true;
+			if (isSlicing) _sliceComboTimer.Start();
+		};
+
+		_sliceComboTimer.AutoReset = false;
 	}
 
 	private void Update()
 	{
 		if (TogglePauseMenu.IsPaused) return;
+
+		if (_comboFinished)
+		{
+			FinishCombo();
+			_comboFinished = false;
+		}
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -34,16 +54,6 @@ public class Slice : MonoBehaviour
 		}
 	}
 
-	private void OnEnable()
-	{
-		StopSlicing();
-	}
-
-	private void OnDisable()
-	{
-		StopSlicing();
-	}
-
 	private void OnTriggerEnter([NotNull] Collider other)
 	{
 		if (!other.CompareTag("Ingredient") || !isSlicing) return;
@@ -53,6 +63,30 @@ public class Slice : MonoBehaviour
 
 		objectsCollision.Destroy();
 		playerStats.Points++;
+
+		if (!_sliceComboTimer.Enabled) return;
+		_sliceComboTimer.Stop();
+		sliceCombo++;
+		_sliceComboTimer.Start();
+	}
+
+	private void FinishCombo()
+	{
+		if (sliceCombo >= 3)
+		{
+			playerStats.Points += sliceCombo;
+			SpawnComboText();
+		}
+
+		sliceCombo = 0;
+	}
+
+	private void SpawnComboText()
+	{
+		var center = _mainCamera.ScreenToWorldPoint(_screenCenter);
+		var middleBetweenCenterAndBlade = (center + transform.position) / 2f;
+		var obj = Instantiate(comboText, middleBetweenCenterAndBlade, Quaternion.identity);
+		obj.UpdateText(sliceCombo);
 	}
 
 	private void StartSlicing()
@@ -65,11 +99,14 @@ public class Slice : MonoBehaviour
 		_bladeCollider.enabled = true;
 		_trailRenderer.Clear();
 		_trailRenderer.enabled = true;
+		_sliceComboTimer.Start();
 	}
 
 	private void StopSlicing()
 	{
 		isSlicing = false;
+		_sliceComboTimer.Stop();
+		FinishCombo();
 		_bladeCollider.enabled = false;
 		_trailRenderer.enabled = false;
 	}

@@ -1511,6 +1511,8 @@ MonoBehaviour:
   isSlicing: 0
   minSliceVelocity: 0.01
   playerStats: {fileID: 806524452}
+  comboText: {fileID: 223247052451613716, guid: 95cb1e48574073443a91ccb1ae4d8fc6, type: 3}
+  sliceCombo: 0
 --- !u!135 &1106993253
 SphereCollider:
   m_ObjectHideFlags: 0
