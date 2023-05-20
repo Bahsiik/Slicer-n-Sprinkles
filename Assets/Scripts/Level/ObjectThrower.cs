@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ObjectThrower : MonoBehaviour
 {
-	private AudioManager _audioManager;
-	
+
 	public List<GameObject> objectsToThrow;
 	public GameObject bombPrefab;
 	public float randomThrowPositionXStart = -7;
@@ -13,13 +12,14 @@ public class ObjectThrower : MonoBehaviour
 	public float throwForceMin = 10.5f;
 	public float throwForceMax = 15f;
 	private readonly Difficulty _diff = Difficulty.selectedDifficulty;
+	private AudioManager _audioManager;
 	private int _currentObjectIndex;
 
 	private void Awake()
 	{
 		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 	}
-	
+
 	private void Start()
 	{
 		StartCoroutine(ThrowRandomObjects());
@@ -62,7 +62,7 @@ public class ObjectThrower : MonoBehaviour
 		rb.AddTorque(randomTorque, ForceMode.Impulse);
 
 		_currentObjectIndex = (_currentObjectIndex + 1) % objectsToThrow.Count;
-		
+
 		_audioManager.PlaySfx("Throw");
 	}
 }

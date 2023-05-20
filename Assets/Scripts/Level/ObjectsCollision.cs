@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ObjectsCollision : MonoBehaviour
 {
-	AudioManager _audioManager;
-	
+
 	private const float DestroyPositionY = -8f;
 	public bool isDestroyed;
+	private AudioManager _audioManager;
 	private ParticleSystem _juiceParticleSystem;
 
 	private void Awake()

@@ -47,7 +47,7 @@ public class PlayerStats : MonoBehaviour
 
 	private void Update()
 	{
-		if (TogglePauseMenu.IsPaused) return;
+		if (TogglePauseMenu.isPaused) return;
 
 		if (IsDead())
 		{

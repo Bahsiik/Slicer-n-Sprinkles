@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class TogglePauseMenu : MonoBehaviour
 {
-	private AudioManager _audioManager;
-	
-	public static bool IsPaused;
+
+	public static bool isPaused;
 	public GameObject pausePanel;
 	public GameObject settingsPanel;
-	private bool IsSettingsOpen
-	{
+	private AudioManager _audioManager;
+
+	private bool IsSettingsOpen {
 		get => settingsPanel.activeSelf;
 		set => settingsPanel.SetActive(value);
 	}
@@ -18,12 +18,12 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 	}
-	
+
 	public void Start()
 	{
 		pausePanel.SetActive(false);
 		Time.timeScale = 1f;
-		IsPaused = false;
+		isPaused = false;
 	}
 
 	public void Update()
@@ -33,8 +33,7 @@ public class TogglePauseMenu : MonoBehaviour
 			if (IsSettingsOpen)
 			{
 				settingsPanel.SetActive(false);
-			}
-			else
+			} else
 			{
 				TogglePause();
 			}
@@ -45,10 +44,10 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		pausePanel.SetActive(!pausePanel.activeSelf);
 		Time.timeScale = pausePanel.activeSelf ? 0f : 1f;
-		IsPaused = pausePanel.activeSelf;
+		isPaused = pausePanel.activeSelf;
 	}
 
-	public void GoToMainMenu() 
+	public void GoToMainMenu()
 	{
 		SceneManager.LoadScene("MainMenu");
 		_audioManager.StopMusic();
@@ -58,7 +57,7 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		pausePanel.SetActive(false);
 		Time.timeScale = 1f;
-		IsPaused = false;
+		isPaused = false;
 	}
 
 	public void QuitGame() => Application.Quit();

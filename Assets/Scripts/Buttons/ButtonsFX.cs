@@ -1,12 +1,13 @@
-using System;
 using UnityEngine;
 
 namespace Buttons
 {
 	public class ButtonsFX : MonoBehaviour
 	{
-		AudioManager _audioManager;
-		[SerializeField] private AudioSource audioSource;
+		[SerializeField]
+		private AudioSource audioSource;
+
+		private AudioManager _audioManager;
 
 		private void Awake()
 		{

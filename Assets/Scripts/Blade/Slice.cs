@@ -34,7 +34,7 @@ public class Slice : MonoBehaviour
 
 	private void Update()
 	{
-		if (TogglePauseMenu.IsPaused) return;
+		if (TogglePauseMenu.isPaused) return;
 
 		if (_comboFinished)
 		{
