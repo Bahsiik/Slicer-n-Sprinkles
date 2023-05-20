@@ -783,7 +783,7 @@ MonoBehaviour:
   throwForceMin: 10.5
   throwForceMax: 15
   throwMaxDelay: 4
-  throwMaxGroupQuantity: 5
+  throwMaxGroupQuantity: 10
 --- !u!4 &505129482
 Transform:
   m_ObjectHideFlags: 0

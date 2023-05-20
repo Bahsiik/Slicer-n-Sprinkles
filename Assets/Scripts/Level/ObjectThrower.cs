@@ -14,7 +14,7 @@ public class ObjectThrower : MonoBehaviour
 	public float throwForceMin = 10.5f;
 	public float throwForceMax = 15f;
 	public float throwMaxDelay = 4f;
-	public int throwMaxGroupQuantity = 5;
+	public int throwMaxGroupQuantity = 10;
 
 	private int _currentObjectIndex;
 
@@ -27,7 +27,7 @@ public class ObjectThrower : MonoBehaviour
 	{
 		while (true)
 		{
-			var randomQuantity = MathUtils.GenerateRandomNumber(1, throwMaxGroupQuantity, 0.3f);
+			var randomQuantity = MathUtils.GenerateRandomNumber(1, throwMaxGroupQuantity, 0.15f);
 			for (var i = 0; i < randomQuantity; i++) ThrowRandomObject();
 
 			var randomDelay = MathUtils.GenerateRandomNumber(0.8f, throwMaxDelay, 0.8f);
