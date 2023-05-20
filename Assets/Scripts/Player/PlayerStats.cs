@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -43,6 +44,17 @@ public class PlayerStats : MonoBehaviour
 		Lives = 5;
 	}
 
+	private void Update()
+	{
+		if (TogglePauseMenu.IsPaused) return;
+
+		if (IsDead())
+		{
+			// TODO : Add game over screen
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+	}
+
 	/// <summary>
 	///     This method is called when the script is loaded or a value is changed in the inspector (Called in the editor only).
 	///     We use this trick to update the points text in the editor as it will call the setter of the Points property.
@@ -51,6 +63,9 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (!pointsText.IsAwake) return;
 		Points = points;
+
+		if (!livesText.IsAwake) return;
+		Lives = lives;
 	}
 
 	public bool IsDead() => lives <= 0;

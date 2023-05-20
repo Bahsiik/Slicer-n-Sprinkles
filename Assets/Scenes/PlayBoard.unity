@@ -774,6 +774,8 @@ MonoBehaviour:
   - {fileID: 8445322760156667860, guid: f8eaa19ddc4d79048bf2a90b8588e54b, type: 3}
   - {fileID: 5749031338187309302, guid: 5fd9f3e496f213c4d98596129d030601, type: 3}
   - {fileID: 6622485247026827674, guid: 9f27a82db2d42b94eaf3730200743f0e, type: 3}
+  bombPrefab: {fileID: 8226936709144724680, guid: c86c47a504b34944a95d2427df86b8e9, type: 3}
+  bombProbability: 0.08
   launchedObjectsSize: 4
   randomThrowPositionXStart: -7
   randomThrowPositionXEnd: 7

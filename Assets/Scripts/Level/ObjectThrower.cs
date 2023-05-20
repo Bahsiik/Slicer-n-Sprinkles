@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectThrower : MonoBehaviour
 {
 	public List<GameObject> objectsToThrow;
+	public GameObject bombPrefab;
+	public float bombProbability = 0.1f;
 	public float launchedObjectsSize = 4f;
 	public float randomThrowPositionXStart = -7;
 	public float randomThrowPositionXEnd = 7;
@@ -36,7 +38,7 @@ public class ObjectThrower : MonoBehaviour
 	private void ThrowRandomObject()
 	{
 		var centerPosition = transform.position;
-		var prefab = objectsToThrow[_currentObjectIndex];
+		var prefab = Random.value < bombProbability ? bombPrefab : objectsToThrow[_currentObjectIndex];
 
 		var throwPosition = new Vector3(Random.Range(randomThrowPositionXStart, randomThrowPositionXEnd), centerPosition.y, centerPosition.z);
 
