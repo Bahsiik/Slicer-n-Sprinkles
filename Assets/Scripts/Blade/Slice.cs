@@ -10,7 +10,7 @@ public class Slice : MonoBehaviour
 	public ComboText comboText;
 	public int sliceCombo;
 	private readonly Vector3 _screenCenter = new(Screen.width / 2f, Screen.height / 2f);
-	private readonly Timer _sliceComboTimer = new(250);
+	private readonly Timer _sliceComboTimer = new(1000 * Difficulty.selectedDifficulty.comboTime);
 	private Collider _bladeCollider;
 	private bool _comboFinished;
 	private Camera _mainCamera;

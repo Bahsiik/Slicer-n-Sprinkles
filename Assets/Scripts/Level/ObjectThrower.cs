@@ -6,16 +6,11 @@ public class ObjectThrower : MonoBehaviour
 {
 	public List<GameObject> objectsToThrow;
 	public GameObject bombPrefab;
-	public float bombProbability = 0.1f;
-	public float launchedObjectsSize = 4f;
 	public float randomThrowPositionXStart = -7;
 	public float randomThrowPositionXEnd = 7;
-	public float randomAngleMax = 20f;
 	public float throwForceMin = 10.5f;
 	public float throwForceMax = 15f;
-	public float throwMaxDelay = 4f;
-	public int throwMaxGroupQuantity = 10;
-
+	private readonly Difficulty _diff = Difficulty.selectedDifficulty;
 	private int _currentObjectIndex;
 
 	private void Start()
@@ -27,10 +22,10 @@ public class ObjectThrower : MonoBehaviour
 	{
 		while (true)
 		{
-			var randomQuantity = MathUtils.GenerateRandomNumber(1, throwMaxGroupQuantity, 0.15f);
+			var randomQuantity = MathUtils.GenerateRandomNumber(1, _diff.throwMaxGroupQuantity, 0.15f);
 			for (var i = 0; i < randomQuantity; i++) ThrowRandomObject();
 
-			var randomDelay = MathUtils.GenerateRandomNumber(0.8f, throwMaxDelay, 0.8f);
+			var randomDelay = MathUtils.GenerateRandomNumber(0.8f, _diff.throwMaxDelay, 0.8f);
 			yield return new WaitForSeconds(randomDelay);
 		}
 	}
@@ -38,19 +33,19 @@ public class ObjectThrower : MonoBehaviour
 	private void ThrowRandomObject()
 	{
 		var centerPosition = transform.position;
-		var prefab = Random.value < bombProbability ? bombPrefab : objectsToThrow[_currentObjectIndex];
+		var prefab = Random.value < _diff.bombProbability ? bombPrefab : objectsToThrow[_currentObjectIndex];
 
 		var throwPosition = new Vector3(Random.Range(randomThrowPositionXStart, randomThrowPositionXEnd), centerPosition.y, centerPosition.z);
 
 		// objects thrown angle is affected by the distance from the center inversely
-		var throwAngle = Random.Range(-randomAngleMax, randomAngleMax) *
+		var throwAngle = Random.Range(-_diff.randomAngleMax, _diff.randomAngleMax) *
 						 (1 - Mathf.Abs(throwPosition.x - centerPosition.x) / (randomThrowPositionXEnd - randomThrowPositionXStart));
 
 		var throwForce = Random.Range(throwForceMin, throwForceMax);
 		var throwDirection = Quaternion.Euler(0, 0, throwAngle);
 
 		var obj = Instantiate(prefab, throwPosition, throwDirection);
-		obj.transform.localScale = new(launchedObjectsSize, launchedObjectsSize, launchedObjectsSize);
+		obj.transform.localScale = new(_diff.launchedObjectsSize, _diff.launchedObjectsSize, _diff.launchedObjectsSize);
 
 		var rb = obj.GetComponent<Rigidbody>();
 		rb.useGravity = true;

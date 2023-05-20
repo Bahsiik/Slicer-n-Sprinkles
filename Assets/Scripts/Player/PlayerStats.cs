@@ -41,7 +41,7 @@ public class PlayerStats : MonoBehaviour
 	private void Start()
 	{
 		Points = 0;
-		Lives = 5;
+		Lives = Difficulty.selectedDifficulty.startingLives;
 	}
 
 	private void Update()
