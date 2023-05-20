@@ -8,7 +8,6 @@ public static class MathUtils
 	///     Generates a random number of a specified numeric type between a specified minimum and maximum value, with a bias towards certain values
 	///     based on the bias parameter.
 	/// </summary>
-	/// <typeparam name="T"> The numeric type of the generated value. </typeparam>
 	/// <param name="min"> The minimum value to generate. </param>
 	/// <param name="max"> The maximum value to generate. </param>
 	/// <param name="bias">
@@ -19,38 +18,27 @@ public static class MathUtils
 	///     A random number of the specified type between the specified minimum and maximum values, biased towards certain values based on
 	///     the bias parameter.
 	/// </returns>
-	public static T GenerateRandomNumber<T>(T min, T max, float bias) where T : struct, IComparable, IConvertible, IFormattable
+	public static float GenerateRandomNumber(float min, float max, float bias)
 	{
-		// Convert the minimum and maximum values to floats.
-		var floatMin = Convert.ToSingle(min);
-		var floatMax = Convert.ToSingle(max);
+		if (bias is < 0 or > 1) throw new ArgumentOutOfRangeException(nameof(bias), "Bias must be between 0 and 1.");
+		if (min > max) throw new ArgumentOutOfRangeException(nameof(min), "Min must be less than or equal to max.");
 
-		// Calculate the range of values to generate.
-		var range = floatMax - floatMin;
+		if (bias == 0) return min;
 
-		// Calculate the midpoint of the range.
-		var midpoint = floatMin + range / 2f;
+		const double tolerance = 0.0000005f;
+		if (Math.Abs(bias - 1) < tolerance) return max;
+		if (Math.Abs(min - max) < tolerance) return min;
+		if (Math.Abs(bias - 0.5f) < tolerance) return Random.Range(min, max);
 
-		// Calculate the adjustment factor based on the bias parameter.
-		var adjustment = Mathf.Pow(2f * (1f - bias), 2f) - 1f;
+		var range = max - min;
+		var mean = bias * range + min;
+		var standardDev = (1 - bias) * range / 3;
 
-		// Generate a random value between -1 and 1, adjusted by the bias parameter.
-		var rand = Random.Range(-1f, 1f) * adjustment;
+		var x1 = Random.value;
+		var x2 = Random.value;
+		var r = Mathf.Sqrt(-2 * Mathf.Log(x1)) * Mathf.Cos(2 * Mathf.PI * x2);
 
-		// Calculate the deviation from the midpoint based on the adjusted random value.
-		var deviation = range * rand / 2f;
-
-		// Calculate the biased random value by adding the deviation to the midpoint.
-		var floatNum = midpoint + deviation;
-
-		// Convert the biased random value back to the specified numeric type.
-		var num = (T) Convert.ChangeType(floatNum, typeof(T));
-
-		// Ensure that the generated number is within the specified range.
-		return num.CompareTo(min) < 0
-			? min
-			: num.CompareTo(max) > 0
-				? max
-				: num;
+		var value = mean + standardDev * r;
+		return Mathf.Clamp(value, min, max);
 	}
 }
