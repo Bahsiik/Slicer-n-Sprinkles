@@ -55,5 +55,7 @@ public class ObjectThrower : MonoBehaviour
 		rb.AddTorque(randomTorque, ForceMode.Impulse);
 
 		_currentObjectIndex = (_currentObjectIndex + 1) % objectsToThrow.Count;
+		
+		AudioManager.Instance.PlaySFX("Throw");
 	}
 }
