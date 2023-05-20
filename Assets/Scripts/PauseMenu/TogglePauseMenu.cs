@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class TogglePauseMenu : MonoBehaviour
 {
-	public static bool isPaused;
+	public static bool IsPaused;
 	private static bool _isSettingsOpen;
 	public GameObject pausePanel;
 	public GameObject settingsPanel;
@@ -12,7 +12,7 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		pausePanel.SetActive(false);
 		Time.timeScale = 1f;
-		isPaused = false;
+		IsPaused = false;
 	}
 
 	public void Update()
@@ -35,7 +35,7 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		pausePanel.SetActive(!pausePanel.activeSelf);
 		Time.timeScale = pausePanel.activeSelf ? 0f : 1f;
-		isPaused = pausePanel.activeSelf;
+		IsPaused = pausePanel.activeSelf;
 	}
 
 	public void GoToMainMenu() 
@@ -49,7 +49,7 @@ public class TogglePauseMenu : MonoBehaviour
 	{
 		pausePanel.SetActive(false);
 		Time.timeScale = 1f;
-		isPaused = false;
+		IsPaused = false;
 		AudioManager.Instance.PlaySFX("Button");
 	}
 
