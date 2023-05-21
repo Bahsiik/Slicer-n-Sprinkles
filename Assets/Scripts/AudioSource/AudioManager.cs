@@ -6,19 +6,14 @@ public class AudioManager : MonoBehaviour
 	[Header("---Audio Sources---"), SerializeField]
 	private AudioSource musicSource;
 
-	[SerializeField]
-	private AudioSource sfxSource;
+	[SerializeField] private AudioSource sfxSource;
 
 	[Header("---Audio Clips---"), SerializeField]
 	private Sound[] musicClips;
 
-	[SerializeField]
-	private Sound[] sfxClips;
+	[SerializeField] private Sound[] sfxClips;
 
-	private void Start()
-	{
-		PlayMusic("Theme");
-	}
+	private void Start() => PlayMusic("Theme");
 
 	private void PlayMusic(string soundName)
 	{
@@ -47,8 +42,5 @@ public class AudioManager : MonoBehaviour
 		sfxSource.PlayOneShot(s.clip);
 	}
 
-	public void StopMusic()
-	{
-		musicSource.Stop();
-	}
+	public void StopMusic() => musicSource.Stop();
 }

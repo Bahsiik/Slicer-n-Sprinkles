@@ -18,15 +18,9 @@ public class ComboText : MonoBehaviour
 		}
 	}
 
-	private void Awake()
-	{
-		_textMeshPro = GetComponent<TextMeshPro>();
-	}
+	private void Awake() => _textMeshPro = GetComponent<TextMeshPro>();
 
-	private void Start()
-	{
-		Destroy(gameObject, 1f);
-	}
+	private void Start() => Destroy(gameObject, 1f);
 
 	public void UpdateText(int combo)
 	{

@@ -4,15 +4,11 @@ namespace Buttons
 {
 	public class ButtonsFX : MonoBehaviour
 	{
-		[SerializeField]
-		private AudioSource audioSource;
+		[SerializeField] private AudioSource audioSource;
 
 		private AudioManager _audioManager;
 
-		private void Awake()
-		{
-			_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-		}
+		private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
 		public void ClickSound()
 		{

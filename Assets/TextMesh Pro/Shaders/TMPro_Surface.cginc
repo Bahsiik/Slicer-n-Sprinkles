@@ -33,7 +33,6 @@ void VertShader(inout appdata_full v, out Input data)
 
 void PixShader(Input input, inout SurfaceOutput o)
 {
-
 #if USE_DERIVATIVE
 	float2 pixelSize = float2(ddx(input.uv_MainTex.y), ddy(input.uv_MainTex.y));
 	pixelSize *= _TextureWidth * .75;

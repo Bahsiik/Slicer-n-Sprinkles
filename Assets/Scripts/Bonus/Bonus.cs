@@ -35,11 +35,13 @@ namespace Bonus
 					Time.timeScale = 0.5f;
 					Time.fixedDeltaTime = 0.02f * Time.timeScale;
 					GetComponent<MeshRenderer>().enabled = false;
+
 					foreach (Transform child in transform.GetChild(0))
 					{
-						Debug.Log("child name : "+child.name);
+						Debug.Log("child name : " + child.name);
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
+
 					Invoke(nameof(ResetTime), 3.5f);
 					break;
 				}
@@ -53,14 +55,14 @@ namespace Bonus
 				default: throw new ArgumentOutOfRangeException();
 			}
 		}
-		
+
 		private void ResetDoublePoints()
 		{
 			Debug.Log("Reset double points");
 			PlayerStats.Instance.DoublePointsActive = false;
 			Destroy(gameObject);
 		}
-		
+
 		private void ResetTime()
 		{
 			Debug.Log("Reset time");

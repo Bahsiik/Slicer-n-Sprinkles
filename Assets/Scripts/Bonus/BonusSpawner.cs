@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Bonus
 {
@@ -9,15 +8,12 @@ namespace Bonus
 		public GameObject topRight;
 		public GameObject bottomLeft;
 
-		private float _spawnTimer;
-
 		public GameObject[] bonusItemsList;
 
+		private float _spawnTimer;
 
-		private void Start()
-		{
-			_spawnTimer = Random.Range(5f, 10f);
-		}
+
+		private void Start() => _spawnTimer = Random.Range(5f, 10f);
 
 		private void Update()
 		{

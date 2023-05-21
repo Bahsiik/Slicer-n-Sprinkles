@@ -6,11 +6,9 @@ public class SettingsMenu : MonoBehaviour
 {
 	public GameObject settingsPanel;
 
-	[SerializeField]
-	private AudioMixer audioMixer;
+	[SerializeField] private AudioMixer audioMixer;
 
-	[SerializeField]
-	private Slider musicSlider, sfxSlider, masterSlider;
+	[SerializeField] private Slider musicSlider, sfxSlider, masterSlider;
 
 	public void Start()
 	{
@@ -48,12 +46,9 @@ public class SettingsMenu : MonoBehaviour
 		PlayerPrefs.SetFloat("SFXVolume", volume);
 	}
 
-	public void ToggleSettings()
-	{
-		settingsPanel.SetActive(!settingsPanel.activeSelf);
-		// add lowpass filter to music source if settings panel is active?
-	}
+	public void ToggleSettings() => settingsPanel.SetActive(!settingsPanel.activeSelf);
 
+	// add lowpass filter to music source if settings panel is active?
 	private void LoadVolumes()
 	{
 		masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");

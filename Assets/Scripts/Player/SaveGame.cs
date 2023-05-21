@@ -17,8 +17,7 @@ public record SaveGame
 	public string pseudo;
 	public int score;
 
-	[NonSerialized]
-	public int slot;
+	[NonSerialized] public int slot;
 
 	static SaveGame() => LoadNumberOfSlots();
 

@@ -9,13 +9,7 @@ public class TextUpdater : MonoBehaviour
 
 	public bool IsAwake => _textElement != null;
 
-	private void Awake()
-	{
-		_textElement = textElement.GetComponent<TextMeshProUGUI>();
-	}
+	private void Awake() => _textElement = textElement.GetComponent<TextMeshProUGUI>();
 
-	public void UpdateText<T>([NotNull] T value)
-	{
-		_textElement.text = value.ToString();
-	}
+	public void UpdateText<T>([NotNull] T value) => _textElement.text = value.ToString();
 }

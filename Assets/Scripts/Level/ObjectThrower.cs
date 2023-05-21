@@ -15,15 +15,9 @@ public class ObjectThrower : MonoBehaviour
 	private AudioManager _audioManager;
 	private int _currentObjectIndex;
 
-	private void Awake()
-	{
-		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-	}
+	private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-	private void Start()
-	{
-		StartCoroutine(ThrowRandomObjects());
-	}
+	private void Start() => StartCoroutine(ThrowRandomObjects());
 
 	private IEnumerator ThrowRandomObjects()
 	{
