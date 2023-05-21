@@ -36,7 +36,7 @@ public record SaveGame
 		// get the highest slot number
 		slots = files
 			.Where(static file => _saveFilesRegex.IsMatch(file))
-			.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value + 1))
+			.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
 			.DefaultIfEmpty()
 			.Max();
 	}

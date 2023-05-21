@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
+			Debug.LogWarning($"Sound: {soundName} not found!");
 			return;
 		}
 
@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
+			Debug.LogWarning($"Sound: {soundName} not found!");
 			return;
 		}
 
