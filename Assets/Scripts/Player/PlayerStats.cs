@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
 	
 	[SerializeField]
 	private bool doublePointsActive;
+	
 
 	public static PlayerStats Instance {
 		get {
