@@ -7,12 +7,12 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
 	[Header("---Audio Sources---")]
-	[SerializeField] private AudioSource _musicSource;
-	[SerializeField] private AudioSource _sfxSource;
+	[SerializeField] private AudioSource musicSource;
+	[SerializeField] private AudioSource sfxSource;
 	
 	[Header("---Audio Clips---")]
-	[SerializeField] private Sound[] _musicClips;
-	[SerializeField] private Sound[] _sfxClips;
+	[SerializeField] private Sound[] musicClips;
+	[SerializeField] private Sound[] sfxClips;
 
 	private void Start()
 	{
@@ -21,29 +21,29 @@ public class AudioManager : MonoBehaviour
 	
 	private void PlayMusic(string soundName)
 	{
-		Sound s = System.Array.Find(_musicClips, sound => sound.soundName == soundName);
+		Sound s = System.Array.Find(musicClips, sound => sound.soundName == soundName);
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + soundName + " not found!");
 			return;
 		}
-		_musicSource.clip = s.clip;
-		_musicSource.Play();
+		musicSource.clip = s.clip;
+		musicSource.Play();
 	}
 	
-	public void PlaySFX(string soundName)
+	public void PlaySfx(string soundName)
 	{
-		Sound s = System.Array.Find(_sfxClips, sound => sound.soundName == soundName);
+		Sound s = System.Array.Find(sfxClips, sound => sound.soundName == soundName);
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + soundName + " not found!");
 			return;
 		}
-		_sfxSource.PlayOneShot(s.clip);
+		sfxSource.PlayOneShot(s.clip);
 	}
 	
 	public void StopMusic()
 	{
-		_musicSource.Stop();
+		musicSource.Stop();
 	}
 }

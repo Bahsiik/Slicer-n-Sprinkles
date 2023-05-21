@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
 	public GameObject settingsPanel;
-	[SerializeField] private AudioMixer _audioMixer;
-	[SerializeField] private Slider _musicSlider, _sfxSlider, _masterSlider;
+	[SerializeField] private AudioMixer audioMixer;
+	[SerializeField] private Slider musicSlider, sfxSlider, masterSlider;
 
 	public void Start()
 	{
@@ -22,28 +22,28 @@ public class SettingsMenu : MonoBehaviour
 		{
 			SetMasterVolume();
 			SetMusicVolume();
-			SetSFXVolume();
+			SetSfxVolume();
 		}
 	}
 	
 	public void SetMasterVolume()
 	{
-		float volume = _masterSlider.value;
-		_audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+		float volume = masterSlider.value;
+		audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
 		PlayerPrefs.SetFloat("MasterVolume", volume);
 	}
 	
 	public void SetMusicVolume()
 	{
-		float volume = _musicSlider.value;
-		_audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+		float volume = musicSlider.value;
+		audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
 		PlayerPrefs.SetFloat("MusicVolume", volume);
 	}
 	
-	public void SetSFXVolume()
+	public void SetSfxVolume()
 	{
-		float volume = _sfxSlider.value;
-		_audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+		float volume = sfxSlider.value;
+		audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
 		PlayerPrefs.SetFloat("SFXVolume", volume);
 	}
 	
@@ -55,24 +55,24 @@ public class SettingsMenu : MonoBehaviour
 	
 	private void LoadVolumes()
 	{
-		_masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-		_musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-		_sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+		masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+		musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+		sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 		
 		SetMasterVolume();
 		SetMusicVolume();
-		SetSFXVolume();
+		SetSfxVolume();
 	}
 	
-	public void ToggleMusic()
-	{
-		// AudioManager.Instance.ToggleMusic();
-		// AudioManager.Instance.PlaySFX("Button");
-	}
-	
-	public void ToggleSFX()
-	{
-		// AudioManager.Instance.ToggleSFX();
-		// AudioManager.Instance.PlaySFX("Button");
-	}
+	// public void ToggleMusic()
+	// {
+	// 	// AudioManager.Instance.ToggleMusic();
+	// 	// AudioManager.Instance.PlaySFX("Button");
+	// }
+	//
+	// public void ToggleSFX()
+	// {
+	// 	// AudioManager.Instance.ToggleSFX();
+	// 	// AudioManager.Instance.PlaySFX("Button");
+	// }
 }

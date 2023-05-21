@@ -28,6 +28,6 @@ public class ObjectsCollision : MonoBehaviour
 		GetComponent<MeshRenderer>().enabled = false;
 		GetComponent<Collider>().enabled = false;
 		isDestroyed = true;
-		_audioManager.PlaySFX("Slice");
+		_audioManager.PlaySfx("Slice");
 	}
 }

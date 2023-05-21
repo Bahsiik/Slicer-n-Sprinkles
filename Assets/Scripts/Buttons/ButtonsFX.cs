@@ -6,7 +6,7 @@ namespace Buttons
 	public class ButtonsFX : MonoBehaviour
 	{
 		AudioManager _audioManager;
-		[SerializeField] private AudioSource _audioSource;
+		[SerializeField] private AudioSource audioSource;
 
 		private void Awake()
 		{
@@ -15,12 +15,12 @@ namespace Buttons
 
 		public void ClickSound()
 		{
-			if (!_audioSource.isPlaying) _audioManager.PlaySFX("Button Click");
+			if (!audioSource.isPlaying) _audioManager.PlaySfx("Button Click");
 		}
 
 		public void HoverSound()
 		{
-			if (!_audioSource.isPlaying) _audioManager.PlaySFX("Button Hover");
+			if (!audioSource.isPlaying) _audioManager.PlaySfx("Button Hover");
 		}
 	}
 }

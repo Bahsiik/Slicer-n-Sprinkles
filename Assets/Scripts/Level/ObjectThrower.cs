@@ -63,6 +63,6 @@ public class ObjectThrower : MonoBehaviour
 
 		_currentObjectIndex = (_currentObjectIndex + 1) % objectsToThrow.Count;
 		
-		_audioManager.PlaySFX("Throw");
+		_audioManager.PlaySfx("Throw");
 	}
 }

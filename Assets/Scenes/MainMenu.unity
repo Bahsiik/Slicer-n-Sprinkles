@@ -3762,7 +3762,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1181093904}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SetSFXVolume
+        m_MethodName: SetSfxVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
