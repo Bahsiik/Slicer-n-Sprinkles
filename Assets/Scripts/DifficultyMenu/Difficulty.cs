@@ -1,5 +1,7 @@
 ﻿public record Difficulty
 {
+	private static int _index;
+
 	public static readonly Difficulty Easy = new() {
 		bombProbability = 0.05f,
 		comboTime = 0.4f,
@@ -34,9 +36,12 @@
 
 	public float bombProbability;
 	public float comboTime;
+	public int index;
 	public float launchedObjectsSize;
 	public float randomAngleMax;
 	public int startingLives;
 	public float throwMaxDelay;
 	public int throwMaxGroupQuantity;
+
+	public Difficulty() => index = _index++;
 }

@@ -13,6 +13,7 @@ public record SaveGame
 	private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
 	public int ingredientsSliced;
 	public int difficulty;
+	public string pseudo;
 	public int score;
 
 	static SaveGame() => LoadNumberOfSlots();
@@ -27,6 +28,8 @@ public record SaveGame
 	{
 		score = playerStats.Points;
 		ingredientsSliced = playerStats.ingredientsSliced;
+		difficulty = Difficulty.selectedDifficulty.index;
+		pseudo = "Player";
 	}
 
 	private static void LoadNumberOfSlots()
