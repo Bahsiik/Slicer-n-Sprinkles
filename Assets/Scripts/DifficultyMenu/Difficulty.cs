@@ -9,7 +9,11 @@
 		randomAngleMax = 15f,
 		startingLives = 10,
 		throwMaxDelay = 4f,
-		throwMaxGroupQuantity = 5
+		throwMaxGroupQuantity = 5,
+		bonusSpawnMinDelay = 4,
+		bonusSpawnMaxDelay = 8,
+		bonusDespawnMinDelay = 5,
+		bonusDespawnMaxDelay = 10
 	};
 
 	public static readonly Difficulty Medium = new() {
@@ -19,7 +23,11 @@
 		randomAngleMax = 22.5f,
 		startingLives = 5,
 		throwMaxDelay = 3f,
-		throwMaxGroupQuantity = 8
+		throwMaxGroupQuantity = 8,
+		bonusSpawnMinDelay = 6,
+		bonusSpawnMaxDelay = 10,
+		bonusDespawnMinDelay = 4,
+		bonusDespawnMaxDelay = 8
 	};
 
 	public static readonly Difficulty Hard = new() {
@@ -29,7 +37,11 @@
 		randomAngleMax = 30f,
 		startingLives = 3,
 		throwMaxDelay = 2f,
-		throwMaxGroupQuantity = 12
+		throwMaxGroupQuantity = 12,
+		bonusSpawnMinDelay = 8,
+		bonusSpawnMaxDelay = 12,
+		bonusDespawnMinDelay = 4,
+		bonusDespawnMaxDelay = 6
 	};
 
 	public static Difficulty selectedDifficulty = Medium;
@@ -42,6 +54,10 @@
 	public int startingLives;
 	public float throwMaxDelay;
 	public int throwMaxGroupQuantity;
+	public int bonusSpawnMinDelay;
+	public int bonusSpawnMaxDelay;
+	public int bonusDespawnMinDelay;
+	public int bonusDespawnMaxDelay;
 
 	public Difficulty() => index = _index++;
 }

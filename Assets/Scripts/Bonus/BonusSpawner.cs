@@ -12,7 +12,8 @@ namespace Bonus
 		private float _spawnTimer;
 
 		public GameObject[] bonusItemsList;
-		
+
+
 		private void Start()
 		{
 			_spawnTimer = Random.Range(5f, 10f);
@@ -22,7 +23,7 @@ namespace Bonus
 		{
 			_spawnTimer -= Time.deltaTime;
 			if (_spawnTimer > 0) return;
-			_spawnTimer = Random.Range(5f, 10f);
+			_spawnTimer = Random.Range(Difficulty.selectedDifficulty.bonusSpawnMinDelay, Difficulty.selectedDifficulty.bonusSpawnMaxDelay);
 			SpawnBonus();
 		}
 
@@ -38,8 +39,8 @@ namespace Bonus
 			);
 
 			var rotation = bonusItemsList[randomBonus].transform.rotation;
-			Instantiate(bonusItemsList[randomBonus], position, rotation);
-			Debug.Log("Spawned bonus item type " + randomBonus + " at position " + position);
+			var bonus = Instantiate(bonusItemsList[randomBonus], position, rotation);
+			Destroy(bonus, Random.Range(Difficulty.selectedDifficulty.bonusDespawnMinDelay, Difficulty.selectedDifficulty.bonusDespawnMaxDelay));
 		}
 	}
 }
