@@ -25,6 +25,7 @@ public class BombItem : MonoBehaviour
 		if (!other.CompareTag("Player")) return;
 		
 		PlayerStats.Instance.Lives--;
+		PlayerStats.Instance.Points -= 10;
 		_audioManager.PlaySfx("Bomb");
 		Destroy(gameObject);
 	}
