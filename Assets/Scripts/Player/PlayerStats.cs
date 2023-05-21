@@ -18,7 +18,6 @@ public class PlayerStats : MonoBehaviour
 
 	[SerializeField]
 	private bool doublePointsActive;
-	
 
 	public static PlayerStats Instance {
 		get {
@@ -59,10 +58,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (TogglePauseMenu.isPaused) return;
 
-		if (IsDead())
-		{
-			GameOver.ToggleGameOver();
-		}
+		if (IsDead()) GameOver.ToggleGameOver();
 	}
 
 	/// <summary>

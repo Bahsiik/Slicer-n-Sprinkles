@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class TogglePauseMenu : MonoBehaviour
 {
-
 	public static bool isPaused;
 	public GameObject pausePanel;
 	public GameObject settingsPanel;
@@ -14,10 +13,7 @@ public class TogglePauseMenu : MonoBehaviour
 		set => settingsPanel.SetActive(value);
 	}
 
-	private void Awake()
-	{
-		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-	}
+	private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
 	public void Start()
 	{
@@ -28,15 +24,14 @@ public class TogglePauseMenu : MonoBehaviour
 
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
+		if (!Input.GetKeyDown(KeyCode.Escape)) return;
+
+		if (IsSettingsOpen)
 		{
-			if (IsSettingsOpen)
-			{
-				settingsPanel.SetActive(false);
-			} else
-			{
-				TogglePause();
-			}
+			settingsPanel.SetActive(false);
+		} else
+		{
+			TogglePause();
 		}
 	}
 

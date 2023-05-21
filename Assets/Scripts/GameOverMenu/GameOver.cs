@@ -28,6 +28,7 @@ namespace GameOverMenu
 			_gameOverText.text = string.Format(_gameOverText.text, PlayerStats.Instance.Points);
 			_gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
 			Time.timeScale = _gameOverPanel.activeSelf ? 0f : 1f;
+			TogglePauseMenu.isPaused = true;
 		}
 	}
 }
