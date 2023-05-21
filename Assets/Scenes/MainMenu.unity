@@ -2585,10 +2585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 1780886312}
-  _audioMixer: {fileID: 24100000, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
-  _musicSlider: {fileID: 758262202}
-  _sfxSlider: {fileID: 1481964763}
-  _masterSlider: {fileID: 135615836}
+  audioMixer: {fileID: 24100000, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
+  musicSlider: {fileID: 758262202}
+  sfxSlider: {fileID: 1481964763}
+  masterSlider: {fileID: 135615836}
 --- !u!4 &1181093905
 Transform:
   m_ObjectHideFlags: 0
@@ -3449,12 +3449,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034d05b80b01ee40b3c4524e9be4a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 1150512221}
-  _sfxSource: {fileID: 175853366}
-  _musicClips:
+  musicSource: {fileID: 1150512221}
+  sfxSource: {fileID: 175853366}
+  musicClips:
   - soundName: Theme
     clip: {fileID: 8300000, guid: 2cebe5ef59f447d4d803665e3ecf1a2f, type: 3}
-  _sfxClips:
+  sfxClips:
   - soundName: Button Click
     clip: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
   - soundName: Button Hover
@@ -3488,7 +3488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 175853366}
+  audioSource: {fileID: 175853366}
 --- !u!1 &1473126960
 GameObject:
   m_ObjectHideFlags: 0

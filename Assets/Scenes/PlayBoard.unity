@@ -644,20 +644,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034d05b80b01ee40b3c4524e9be4a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 315651103}
-  _sfxSource: {fileID: 512633827}
-  _musicClips:
+  musicSource: {fileID: 315651103}
+  sfxSource: {fileID: 512633827}
+  musicClips:
   - soundName: Theme
     clip: {fileID: 8300000, guid: 5d6e42b338547477aa7a88708f894463, type: 3}
-  _sfxClips:
-  - soundName: Slice
-    clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  sfxClips:
   - soundName: Game Over
     clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
-  - soundName: Button Click
-    clip: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
-  - soundName: Button Hover
-    clip: {fileID: 8300000, guid: cf11a934967b23340a4d22619832082c, type: 3}
+  - soundName: Slice
+    clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   - soundName: Throw
     clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
 --- !u!114 &336504706
@@ -672,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 512633827}
+  audioSource: {fileID: 512633827}
 --- !u!1 &392449875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,10 +2446,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 1970911035}
-  _audioMixer: {fileID: 24100000, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
-  _musicSlider: {fileID: 1924468698}
-  _sfxSlider: {fileID: 1941825143}
-  _masterSlider: {fileID: 580044214}
+  audioMixer: {fileID: 24100000, guid: 280fc520416e7e7438f15e980491e76a, type: 2}
+  musicSlider: {fileID: 1924468698}
+  sfxSlider: {fileID: 1941825143}
+  masterSlider: {fileID: 580044214}
 --- !u!1 &1106408916
 GameObject:
   m_ObjectHideFlags: 0
