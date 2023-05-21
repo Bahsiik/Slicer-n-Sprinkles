@@ -63,7 +63,7 @@ public class Slice : MonoBehaviour
 
 		objectsCollision.Destroy();
 		playerStats.Points++;
-		playerStats.fruitsSliced++;
+		playerStats.ingredientsSliced++;
 
 		if (!_sliceComboTimer.Enabled) return;
 		_sliceComboTimer.Stop();

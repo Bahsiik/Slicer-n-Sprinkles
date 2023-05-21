@@ -11,22 +11,22 @@ public record SaveGame
 {
 	public static int slots;
 	private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
-	public int score;
-	public int fruitsSliced;
+	public int ingredientsSliced;
 	public int difficulty;
+	public int score;
 
 	static SaveGame() => LoadNumberOfSlots();
 
-	public SaveGame(int score, int fruitsSliced)
+	public SaveGame(int score, int ingredientsSliced)
 	{
 		this.score = score;
-		this.fruitsSliced = fruitsSliced;
+		this.ingredientsSliced = ingredientsSliced;
 	}
 
 	public SaveGame([NotNull] PlayerStats playerStats)
 	{
 		score = playerStats.Points;
-		fruitsSliced = playerStats.fruitsSliced;
+		ingredientsSliced = playerStats.ingredientsSliced;
 	}
 
 	private static void LoadNumberOfSlots()

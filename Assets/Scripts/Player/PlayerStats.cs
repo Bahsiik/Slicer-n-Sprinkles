@@ -1,6 +1,5 @@
 using GameOverMenu;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 
 	public TextUpdater livesText;
 	public TextUpdater pointsText;
-	public int fruitsSliced;
+	public int ingredientsSliced;
 
 	[SerializeField]
 	private int lives;
