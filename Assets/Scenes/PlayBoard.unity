@@ -861,16 +861,18 @@ MonoBehaviour:
   - soundName: Theme
     clip: {fileID: 8300000, guid: 5d6e42b338547477aa7a88708f894463, type: 3}
   sfxClips:
-  - soundName: Game Over
+  - soundName: Bomb
     clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   - soundName: Slice
-    clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+    clip: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
   - soundName: Throw
     clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   - soundName: Button Click
     clip: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
   - soundName: Button Hover
     clip: {fileID: 8300000, guid: cf11a934967b23340a4d22619832082c, type: 3}
+  - soundName: Game Over
+    clip: {fileID: 8300000, guid: a0ca8964c08d54c5dbebf245bdc474ca, type: 3}
 --- !u!114 &336504706
 MonoBehaviour:
   m_ObjectHideFlags: 0

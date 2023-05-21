@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class BombItem : MonoBehaviour
 {
+	private AudioManager _audioManager;
 	private const float DestroyPositionY = -8f;
 
+	private void Awake()
+	{
+		_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+	}
+	
 	private void Update()
 	{
 		// Destroy when out of bounds
@@ -17,8 +23,9 @@ public class BombItem : MonoBehaviour
 	private void OnTriggerEnter([NotNull] Collider other)
 	{
 		if (!other.CompareTag("Player")) return;
-
-		SaveGame.SaveIntoLatestSlot();
-		GameOver.ToggleGameOver();
+		
+		PlayerStats.Instance.Lives--;
+		_audioManager.PlaySfx("Bomb");
+		Destroy(gameObject);
 	}
 }
