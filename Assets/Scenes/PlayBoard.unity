@@ -864,7 +864,7 @@ MonoBehaviour:
   - soundName: Bomb
     clip: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   - soundName: Slice
-    clip: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+    clip: {fileID: 8300000, guid: db454edc204ca3b4a9433e90ec5bc72a, type: 3}
   - soundName: Throw
     clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   - soundName: Button Click
