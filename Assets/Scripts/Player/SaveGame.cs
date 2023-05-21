@@ -33,19 +33,14 @@ public record SaveGame
 		score = playerStats.Points;
 		ingredientsSliced = playerStats.ingredientsSliced;
 		difficulty = Difficulty.selectedDifficulty.index;
-		pseudo = "Player";
+		pseudo = PlayerStats.playerName;
 	}
 
-	private static void LoadNumberOfSlots()
+	public static void DeleteSlot(int slot)
 	{
-		var files = Directory.GetFiles(Application.persistentDataPath);
-
-		// get the highest slot number
-		slots = files
-			.Where(static file => _saveFilesRegex.IsMatch(file))
-			.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
-			.DefaultIfEmpty()
-			.Max();
+		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
+		if (!File.Exists(path)) return;
+		File.Delete(path);
 	}
 
 	[CanBeNull]
@@ -83,17 +78,22 @@ public record SaveGame
 			.ToList();
 	}
 
+	private static void LoadNumberOfSlots()
+	{
+		var files = Directory.GetFiles(Application.persistentDataPath);
+
+		// get the highest slot number
+		slots = files
+			.Where(static file => _saveFilesRegex.IsMatch(file))
+			.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
+			.DefaultIfEmpty()
+			.Max();
+	}
+
 	public static void SaveIntoLatestSlot()
 	{
 		LoadNumberOfSlots();
 		SaveIntoSlot(slots);
-	}
-
-	public static void DeleteSlot(int slot)
-	{
-		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
-		if (!File.Exists(path)) return;
-		File.Delete(path);
 	}
 
 	public static void SaveIntoSlot(int slot)

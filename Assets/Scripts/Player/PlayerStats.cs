@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 	private static PlayerStats _instance;
+	public static string playerName;
 
 	public TextUpdater livesText;
 	public TextUpdater pointsText;
@@ -14,7 +15,7 @@ public class PlayerStats : MonoBehaviour
 
 	[SerializeField]
 	private int points;
-	
+
 	[SerializeField]
 	private bool doublePointsActive;
 	
@@ -42,7 +43,7 @@ public class PlayerStats : MonoBehaviour
 			pointsText.UpdateText(points);
 		}
 	}
-	
+
 	public bool DoublePointsActive {
 		get => doublePointsActive;
 		set => doublePointsActive = value;
@@ -76,11 +77,8 @@ public class PlayerStats : MonoBehaviour
 		if (!livesText.IsAwake) return;
 		Lives = lives;
 	}
-	
-	public void AddLife()
-	{
-		Lives++;
-	}
+
+	public void AddLife() => Lives++;
 
 	private bool IsDead() => lives <= 0;
 }

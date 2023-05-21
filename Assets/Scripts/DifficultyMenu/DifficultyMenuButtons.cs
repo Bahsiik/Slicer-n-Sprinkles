@@ -15,7 +15,8 @@ namespace DifficultyMenu
 				_ => throw new("Invalid difficulty")
 			};
 
-			SceneManager.LoadScene("PlayBoard");
+			var sceneToLoad = PlayerStats.playerName == null ? "PlayerNameMenu" : "PlayBoard";
+			SceneManager.LoadScene(sceneToLoad);
 		}
 
 		public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
