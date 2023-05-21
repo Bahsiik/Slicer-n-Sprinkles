@@ -867,6 +867,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
   - soundName: Throw
     clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - soundName: Button Click
+    clip: {fileID: 8300000, guid: 8fff23651a4de6d43a42523413afe9ba, type: 3}
+  - soundName: Button Hover
+    clip: {fileID: 8300000, guid: cf11a934967b23340a4d22619832082c, type: 3}
 --- !u!114 &336504706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4488,7 +4492,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918710351}
+        - m_Target: {fileID: 336504706}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: ClickSound
           m_Mode: 1
@@ -4504,7 +4508,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 918710351}
+        - m_Target: {fileID: 336504706}
           m_TargetAssemblyTypeName: Buttons.ButtonsFX, Assembly-CSharp
           m_MethodName: HoverSound
           m_Mode: 1
