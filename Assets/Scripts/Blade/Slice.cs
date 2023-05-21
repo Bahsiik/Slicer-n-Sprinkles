@@ -62,7 +62,7 @@ public class Slice : MonoBehaviour
 		if (objectsCollision == null) return;
 
 		objectsCollision.Destroy();
-		playerStats.Points++;
+		playerStats.Points += playerStats.DoublePointsActive ? 2 : 1;
 		playerStats.ingredientsSliced++;
 
 		if (!_sliceComboTimer.Enabled) return;
@@ -75,7 +75,7 @@ public class Slice : MonoBehaviour
 	{
 		if (sliceCombo >= 3)
 		{
-			playerStats.Points += sliceCombo;
+			playerStats.Points += playerStats.DoublePointsActive ? 2 * sliceCombo : sliceCombo;
 			SpawnComboText();
 		}
 
