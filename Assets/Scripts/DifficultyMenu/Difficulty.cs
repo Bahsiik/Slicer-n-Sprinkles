@@ -7,7 +7,7 @@
 		comboTime = 0.4f,
 		launchedObjectsSize = 5f,
 		randomAngleMax = 15f,
-		startingLives = 10,
+		startingLives = 5,
 		throwMaxDelay = 4f,
 		throwMaxGroupQuantity = 5,
 		bonusSpawnMinDelay = 4,
@@ -21,7 +21,7 @@
 		comboTime = 0.3f,
 		launchedObjectsSize = 4f,
 		randomAngleMax = 22.5f,
-		startingLives = 5,
+		startingLives = 3,
 		throwMaxDelay = 3f,
 		throwMaxGroupQuantity = 8,
 		bonusSpawnMinDelay = 6,
@@ -35,7 +35,7 @@
 		comboTime = 0.2f,
 		launchedObjectsSize = 3f,
 		randomAngleMax = 30f,
-		startingLives = 3,
+		startingLives = 1,
 		throwMaxDelay = 2f,
 		throwMaxGroupQuantity = 12,
 		bonusSpawnMinDelay = 8,
@@ -47,6 +47,10 @@
 	public static Difficulty selectedDifficulty = Medium;
 
 	public float bombProbability;
+	public int bonusDespawnMaxDelay;
+	public int bonusDespawnMinDelay;
+	public int bonusSpawnMaxDelay;
+	public int bonusSpawnMinDelay;
 	public float comboTime;
 	public int index;
 	public float launchedObjectsSize;
@@ -54,10 +58,6 @@
 	public int startingLives;
 	public float throwMaxDelay;
 	public int throwMaxGroupQuantity;
-	public int bonusSpawnMinDelay;
-	public int bonusSpawnMaxDelay;
-	public int bonusDespawnMinDelay;
-	public int bonusDespawnMaxDelay;
 
 	public Difficulty() => index = _index++;
 }

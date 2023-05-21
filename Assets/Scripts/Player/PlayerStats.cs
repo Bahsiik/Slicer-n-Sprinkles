@@ -6,7 +6,6 @@ public class PlayerStats : MonoBehaviour
 	private static PlayerStats _instance;
 	public static string playerName;
 
-	public TextUpdater livesText;
 	public TextUpdater pointsText;
 	public int ingredientsSliced;
 
@@ -29,10 +28,7 @@ public class PlayerStats : MonoBehaviour
 
 	public int Lives {
 		get => lives;
-		set {
-			lives = value;
-			livesText.UpdateText(lives);
-		}
+		set => lives = value;
 	}
 
 	public int Points {
@@ -42,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 			pointsText.UpdateText(points);
 		}
 	}
-
+	
 	public bool DoublePointsActive {
 		get => doublePointsActive;
 		set => doublePointsActive = value;
@@ -70,7 +66,6 @@ public class PlayerStats : MonoBehaviour
 		if (!pointsText.IsAwake) return;
 		Points = points;
 
-		if (!livesText.IsAwake) return;
 		Lives = lives;
 	}
 
