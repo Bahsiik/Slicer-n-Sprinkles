@@ -1,3 +1,4 @@
+using GameOverMenu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,8 +52,7 @@ public class PlayerStats : MonoBehaviour
 
 		if (IsDead())
 		{
-			// TODO : Add game over screen
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			GameOver.ToggleGameOver();
 		}
 	}
 
@@ -69,5 +69,5 @@ public class PlayerStats : MonoBehaviour
 		Lives = lives;
 	}
 
-	public bool IsDead() => lives <= 0;
+	private bool IsDead() => lives <= 0;
 }

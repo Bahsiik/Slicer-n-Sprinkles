@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using GameOverMenu;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,8 +19,6 @@ public class BombItem : MonoBehaviour
 		if (!other.CompareTag("Player")) return;
 
 		SaveGame.SaveIntoLatestSlot();
-
-		// TODO : Add game over screen
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		GameOver.ToggleGameOver();
 	}
 }
