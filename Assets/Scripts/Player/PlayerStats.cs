@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
 
 	[SerializeField]
 	private int points;
+	
+	[SerializeField]
+	private bool doublePointsActive;
 
 	public static PlayerStats Instance {
 		get {
@@ -37,6 +40,11 @@ public class PlayerStats : MonoBehaviour
 			points = value;
 			pointsText.UpdateText(points);
 		}
+	}
+	
+	public bool DoublePointsActive {
+		get => doublePointsActive;
+		set => doublePointsActive = value;
 	}
 
 	private void Start()
@@ -66,6 +74,11 @@ public class PlayerStats : MonoBehaviour
 
 		if (!livesText.IsAwake) return;
 		Lives = lives;
+	}
+	
+	public void AddLife()
+	{
+		Lives++;
 	}
 
 	private bool IsDead() => lives <= 0;
