@@ -12,10 +12,7 @@ namespace MainMenu
 			set => settingsPanel.SetActive(value);
 		}
 
-		public void Start()
-		{
-			settingsPanel.SetActive(false);
-		}
+		public void Start() => settingsPanel.SetActive(false);
 
 		public void Update()
 		{
@@ -25,10 +22,9 @@ namespace MainMenu
 			}
 		}
 
-		public void GotToDifficultyMenu()
-		{
-			SceneManager.LoadScene("DifficultySelectionMenu");
-		}
+		public void GotToDifficultyMenu() => SceneManager.LoadScene("DifficultySelectionMenu");
+
+		public void GoToLeaderboardMenu() => SceneManager.LoadScene("LeaderboardMenu");
 
 		public void QuitGame()
 		{
@@ -36,9 +32,6 @@ namespace MainMenu
 			Application.Quit();
 		}
 
-		private void ToggleSettings()
-		{
-			settingsPanel.SetActive(!settingsPanel.activeSelf);
-		}
+		private void ToggleSettings() => settingsPanel.SetActive(!settingsPanel.activeSelf);
 	}
 }

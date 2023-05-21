@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -15,6 +16,9 @@ public record SaveGame
 	public int difficulty;
 	public string pseudo;
 	public int score;
+
+	[NonSerialized]
+	public int slot;
 
 	static SaveGame() => LoadNumberOfSlots();
 
@@ -53,15 +57,43 @@ public record SaveGame
 		var bf = new BinaryFormatter();
 		var file = File.Open(path, FileMode.Open);
 		var saveGame = (SaveGame) bf.Deserialize(file);
+		saveGame.slot = slot;
 		file.Close();
 
 		return saveGame;
+	}
+
+	[NotNull]
+	public static List<SaveGame> LoadAllData()
+	{
+		var files = Directory.GetFiles(Application.persistentDataPath);
+
+		return files
+			.Where(static file => _saveFilesRegex.IsMatch(file))
+			.Select(static file => LoadDataFromSlot(int.Parse(_saveFilesRegex.Match(file).Groups[1].Value)))
+			.Where(
+				static (saveGame, index) => {
+					if (saveGame?.pseudo != null) return true;
+
+					DeleteSlot(index);
+					Debug.Log($"Deleted slot {index} because it was corrupted");
+					return false;
+				}
+			)
+			.ToList();
 	}
 
 	public static void SaveIntoLatestSlot()
 	{
 		LoadNumberOfSlots();
 		SaveIntoSlot(slots);
+	}
+
+	public static void DeleteSlot(int slot)
+	{
+		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
+		if (!File.Exists(path)) return;
+		File.Delete(path);
 	}
 
 	public static void SaveIntoSlot(int slot)

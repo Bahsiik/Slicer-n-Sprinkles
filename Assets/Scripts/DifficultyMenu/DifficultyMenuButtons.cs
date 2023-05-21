@@ -16,12 +16,8 @@ namespace DifficultyMenu
 			};
 
 			SceneManager.LoadScene("PlayBoard");
-			// GameObject.Find("MenuMusic").GetComponent<AudioSource>().Pause();
 		}
 
-		public void GoToMainMenu()
-		{
-			SceneManager.LoadScene("MainMenu");
-		}
+		public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
 	}
 }
