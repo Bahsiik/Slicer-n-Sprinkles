@@ -47,11 +47,28 @@ namespace SpecialItems
 			specialItem.DisableItem();
 
 			var specialItemEffect = specialItem.GetComponent<SpecialItemEffect>();
-			if (specialItemEffect.bonusType is SpecialItemEffect.ItemType.SlowTime or SpecialItemEffect.ItemType.SpeedTime)
+			switch (specialItemEffect.bonusType)
 			{
-				foreach (Transform child in specialItem.transform.Find("Face/Arrow"))
-				{
-					child.GetComponent<MeshRenderer>().enabled = false;
+				case SpecialItemEffect.ItemType.SlowTime or SpecialItemEffect.ItemType.SpeedTime: {
+					foreach (Transform child in specialItem.transform.Find("Face/Arrow"))
+					{
+						child.GetComponent<MeshRenderer>().enabled = false;
+					}
+
+					break;
+				}
+
+				case SpecialItemEffect.ItemType.ExtraLife or SpecialItemEffect.ItemType.RemoveLife: {
+					foreach (Transform child in specialItem.transform)
+					{
+						child.GetComponent<MeshRenderer>().enabled = false;
+					}
+					break;
+				}
+
+				case SpecialItemEffect.ItemType.RemovePoints: {
+					specialItem.transform.Find("Sparkles Particles").GetComponent<ParticleSystem>().Stop();
+					break;
 				}
 			}
 			

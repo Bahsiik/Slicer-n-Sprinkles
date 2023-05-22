@@ -18,7 +18,6 @@ namespace SpecialItems
 			_textMeshPro.text = bonusName;
 			_animator.Play("BonusTextAnimation", -1, 0f);
 			Destroy(gameObject, 1f);
-			
 		}
 	}
 }

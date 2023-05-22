@@ -34,6 +34,12 @@ namespace SpecialItems
 			_specialItem = GetComponent<SpecialItem>();
 		}
 
+		private void Update()
+		{
+			
+			transform.Rotate(0, 1, 0, Space.World);
+		}
+
 		private void OnTriggerEnter([NotNull] Collider other)
 		{
 			if (!other.CompareTag("Player")) return;

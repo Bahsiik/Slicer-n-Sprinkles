@@ -3863,10 +3863,10 @@ MonoBehaviour:
   bonusItemsList:
   - {fileID: 1041613035722435943, guid: 8b253c53b36f55e4e92059bd1e549cbb, type: 3}
   - {fileID: -5023232019850909830, guid: e4ff20ddc3fac5245a8f83f497dbce9a, type: 3}
-  - {fileID: 2250804105191244200, guid: f46ce99dcaef8bd42a495c21de894ea5, type: 3}
-  - {fileID: -4794655476893871870, guid: fddd57d0089f42847b1834efa35230dc, type: 3}
   - {fileID: -6942042770849851441, guid: 615f375b5396030409a5ea788a9f5ca5, type: 3}
   - {fileID: 1122288342370697519, guid: 5de1e0b52a4b5a842ab0c31f5af7de4f, type: 3}
+  - {fileID: 2250804105191244200, guid: f46ce99dcaef8bd42a495c21de894ea5, type: 3}
+  - {fileID: -4794655476893871870, guid: fddd57d0089f42847b1834efa35230dc, type: 3}
 --- !u!4 &1396152378
 Transform:
   m_ObjectHideFlags: 0
