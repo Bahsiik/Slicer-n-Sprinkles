@@ -44,7 +44,10 @@ namespace SpecialItems
 
 			specialItem.DisableItem();
 
+			if (specialItem == null) yield break;
+
 			var specialItemEffect = specialItem.GetComponent<SpecialItemEffect>();
+
 			switch (specialItemEffect.bonusType)
 			{
 				case SpecialItemEffect.ItemType.SlowTime or SpecialItemEffect.ItemType.SpeedTime: {
@@ -52,6 +55,7 @@ namespace SpecialItems
 					{
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
+
 					break;
 				}
 
@@ -60,6 +64,7 @@ namespace SpecialItems
 					{
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
+
 					break;
 				}
 
@@ -68,7 +73,7 @@ namespace SpecialItems
 					break;
 				}
 			}
-			
+
 			Destroy(specialItem, 5f);
 		}
 	}
