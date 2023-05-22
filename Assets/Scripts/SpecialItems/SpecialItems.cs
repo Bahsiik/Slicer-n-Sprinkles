@@ -84,6 +84,7 @@ namespace SpecialItems
 					}
 					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("Speed Time");
+					bonusTextObject.GetComponent<TextMeshProUGUI>().color = new Color(0.4235294f, 0f, 0.4901961f);
 					bonusTextObject.transform.SetParent(specialItemsSpawner.transform);
 					Invoke(nameof(ResetTime), 3.5f);
 					break;
@@ -93,6 +94,7 @@ namespace SpecialItems
 					PlayerStats.Instance.Points -= 10;
 					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("-10 Points");
+					bonusTextObject.GetComponent<TextMeshProUGUI>().color = new Color(0.4235294f, 0f, 0.4901961f);
 					bonusTextObject.transform.SetParent(specialItemsSpawner.transform);
 					Destroy(gameObject);
 					break;
@@ -103,6 +105,7 @@ namespace SpecialItems
 					if (PlayerStats.Instance.Lives < 0) PlayerStats.Instance.Lives = 0;
 					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("-1 Life");
+					bonusTextObject.GetComponent<TextMeshProUGUI>().color = new Color(0.4235294f, 0f, 0.4901961f);
 					bonusTextObject.transform.SetParent(specialItemsSpawner.transform);
 					Destroy(gameObject);
 					break;
