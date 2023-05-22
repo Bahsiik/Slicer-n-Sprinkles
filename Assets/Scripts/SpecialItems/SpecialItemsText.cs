@@ -15,7 +15,6 @@ namespace SpecialItems
 		}
 
 		public void UpdateText(string bonusName) {
-			Debug.Log("UpdateText");
 			_textMeshPro.text = bonusName;
 			_animator.Play("BonusTextAnimation", -1, 0f);
 			Destroy(gameObject, 1f);

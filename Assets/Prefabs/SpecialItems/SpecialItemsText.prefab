@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8432124061227106646}
   - component: {fileID: 1091116979656209497}
   m_Layer: 5
-  m_Name: BonusText
+  m_Name: SpecialItemsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

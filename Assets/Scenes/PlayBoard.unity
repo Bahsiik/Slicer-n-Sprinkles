@@ -3682,7 +3682,7 @@ GameObject:
   - component: {fileID: 1396152378}
   - component: {fileID: 1396152377}
   m_Layer: 0
-  m_Name: BonusSpawner
+  m_Name: SpecialItemsSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3704,9 +3704,7 @@ MonoBehaviour:
   topRight: {fileID: 1015818043}
   bottomLeft: {fileID: 1450796909}
   bonusItemsList:
-  - {fileID: 9133686012828299409, guid: 8b253c53b36f55e4e92059bd1e549cbb, type: 3}
-  - {fileID: 7391626352168287801, guid: e4ff20ddc3fac5245a8f83f497dbce9a, type: 3}
-  - {fileID: 6354738497224842883, guid: f46ce99dcaef8bd42a495c21de894ea5, type: 3}
+  - {fileID: 8226936709144724680, guid: 5de1e0b52a4b5a842ab0c31f5af7de4f, type: 3}
 --- !u!4 &1396152378
 Transform:
   m_ObjectHideFlags: 0
