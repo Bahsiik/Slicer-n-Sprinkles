@@ -1,24 +1,16 @@
-using AudioSource;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Buttons
 {
-	public class ButtonsFX : MonoBehaviour
+	public class ButtonsFX : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 	{
-		[SerializeField] private UnityEngine.AudioSource audioSource;
-
 		private AudioManager _audioManager;
 
 		private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-		public void ClickSound()
-		{
-			if (!audioSource.isPlaying) _audioManager.PlaySfx("Button Click");
-		}
+		public void OnPointerClick(PointerEventData eventData) => _audioManager.PlaySfx("Button Click");
 
-		public void HoverSound()
-		{
-			if (!audioSource.isPlaying) _audioManager.PlaySfx("Button Hover");
-		}
+		public void OnPointerEnter(PointerEventData eventData) => _audioManager.PlaySfx("Button Hover");
 	}
 }

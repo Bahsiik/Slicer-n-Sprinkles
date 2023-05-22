@@ -1,49 +1,48 @@
 using System;
 using UnityEngine;
 
-namespace AudioSource
+public class AudioManager : MonoBehaviour
 {
-	public class AudioManager : MonoBehaviour
+	[Header("---Audio Sources---"), SerializeField]
+	private AudioSource musicSource;
+
+	[SerializeField] private AudioSource sfxSource;
+
+	[Header("---Audio Clips---"), SerializeField]
+	private Sound[] musicClips;
+
+	[SerializeField] private Sound[] sfxClips;
+
+	// private void Start() => PlayMusic("Theme");
+	
+	private void Awake() => DontDestroyOnLoad(gameObject);
+
+	public void PlayMusic(string soundName)
 	{
-		[Header("---Audio Sources---"), SerializeField]
-		private UnityEngine.AudioSource musicSource;
+		var s = Array.Find(musicClips, sound => sound.soundName == soundName);
 
-		[SerializeField] private UnityEngine.AudioSource sfxSource;
-
-		[Header("---Audio Clips---"), SerializeField]
-		private Sound[] musicClips;
-
-		[SerializeField] private Sound[] sfxClips;
-
-		private void Start() => PlayMusic("Theme");
-
-		private void PlayMusic(string soundName)
+		if (s == null)
 		{
-			var s = Array.Find(musicClips, sound => sound.soundName == soundName);
-
-			if (s == null)
-			{
-				Debug.LogWarning($"Sound: {soundName} not found!");
-				return;
-			}
-
-			musicSource.clip = s.clip;
-			musicSource.Play();
+			Debug.LogWarning($"Sound: {soundName} not found!");
+			return;
 		}
 
-		public void PlaySfx(string soundName)
-		{
-			var s = Array.Find(sfxClips, sound => sound.soundName == soundName);
-
-			if (s == null)
-			{
-				Debug.LogWarning($"Sound: {soundName} not found!");
-				return;
-			}
-
-			sfxSource.PlayOneShot(s.clip);
-		}
-
-		public void StopMusic() => musicSource.Stop();
+		musicSource.clip = s.clip;
+		musicSource.Play();
 	}
+
+	public void PlaySfx(string soundName)
+	{
+		var s = Array.Find(sfxClips, sound => sound.soundName == soundName);
+
+		if (s == null)
+		{
+			Debug.LogWarning($"Sound: {soundName} not found!");
+			return;
+		}
+
+		sfxSource.PlayOneShot(s.clip);
+	}
+
+	public void StopMusic() => musicSource.Stop();
 }
