@@ -39,7 +39,7 @@ namespace GameOverMenu
 			else _highScoreText.gameObject.GetComponent<Animator>().Play("NewHighScoreAnimation", -1, 0f);
 
 			Time.timeScale = 0f;
-			TogglePauseMenu.isPaused = true;
+			TogglePauseMenu.IsPaused = true;
 		}
 	}
 }

@@ -45,11 +45,11 @@ namespace Level
 			FindObjectsOfType<SpecialItem>().ToList().ForEach(static item => Destroy(item.gameObject));
 			FindObjectsOfType<SpecialItemEffect>().ToList().ForEach(static item => Destroy(item.gameObject));
 
-			ObjectThrower.isPaused = true;
+			ObjectThrower.IsPaused = true;
 			StartCoroutine(ShowGameOverMenu());
 		}
 
-		public void Destroy()
+		private void Destroy()
 		{
 			bombExplosionFX.enabled = true;
 			bombParticleSystem.Play();

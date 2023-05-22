@@ -5,7 +5,7 @@ namespace PauseMenu
 {
 	public class TogglePauseMenu : MonoBehaviour
 	{
-		public static bool isPaused;
+		public static bool IsPaused;
 		public GameObject pausePanel;
 		public GameObject settingsPanel;
 		private AudioManager _audioManager;
@@ -21,7 +21,7 @@ namespace PauseMenu
 		{
 			pausePanel.SetActive(false);
 			Time.timeScale = 1f;
-			isPaused = false;
+			IsPaused = false;
 		}
 
 		public void Update()
@@ -41,7 +41,7 @@ namespace PauseMenu
 		{
 			pausePanel.SetActive(!pausePanel.activeSelf);
 			Time.timeScale = pausePanel.activeSelf ? 0f : 1f;
-			isPaused = pausePanel.activeSelf;
+			IsPaused = pausePanel.activeSelf;
 		}
 
 		public void GoToMainMenu()
@@ -54,7 +54,7 @@ namespace PauseMenu
 		{
 			pausePanel.SetActive(false);
 			Time.timeScale = 1f;
-			isPaused = false;
+			IsPaused = false;
 		}
 
 		public void QuitGame() => Application.Quit();

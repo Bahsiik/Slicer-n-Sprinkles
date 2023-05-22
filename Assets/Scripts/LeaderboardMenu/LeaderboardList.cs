@@ -24,7 +24,7 @@ namespace LeaderboardMenu
 			foreach (var saveGame in leaderboard)
 			{
 				var leaderboardEntry = Instantiate(leaderboardEntryPrefab, transform).GetComponent<LeaderboardEntry>();
-				leaderboardEntry.UpdateEntry(saveGame, saveGame.slot);
+				leaderboardEntry.UpdateEntry(saveGame, saveGame.Slot);
 				leaderboardEntries.Add(leaderboardEntry);
 				leaderboardEntry.transform.SetParent(verticalLayoutGroup.transform);
 			}

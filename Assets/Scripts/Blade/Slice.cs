@@ -44,7 +44,7 @@ namespace Blade
 
 		private void Update()
 		{
-			if (TogglePauseMenu.isPaused) return;
+			if (TogglePauseMenu.IsPaused) return;
 
 			if (_comboFinished)
 			{
@@ -147,10 +147,10 @@ namespace Blade
 
 		private IEnumerator FadeTo(float aValue, float aTime, GameObject splash)
 		{
-			float alpha = splash.GetComponent<Image>().color.a;
-			for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+			var alpha = splash.GetComponent<Image>().color.a;
+			for (var t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
 			{
-				Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha,aValue,t));
+				var newColor = new Color(1, 1, 1, Mathf.Lerp(alpha,aValue,t));
 				splash.GetComponent<Image>().color = newColor;
 				yield return null;
 			}

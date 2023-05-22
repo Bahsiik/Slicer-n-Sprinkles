@@ -9,7 +9,6 @@ namespace SpecialItems
 
 		public void DisableItem()
 		{
-			// check if not null
 			if (specialItemCollider == null || meshRenderer == null) return;
 			specialItemCollider.enabled = false;
 			meshRenderer.enabled = false;

@@ -13,9 +13,7 @@ public class AudioManager : MonoBehaviour
 	private Sound[] musicClips;
 
 	[SerializeField] private Sound[] sfxClips;
-
-	// private void Start() => PlayMusic("Theme");
-
+	
 	private void Awake() => DontDestroyOnLoad(gameObject);
 
 	public void PlayMusic(string soundName)
@@ -24,7 +22,6 @@ public class AudioManager : MonoBehaviour
 
 		if (s == null)
 		{
-			Debug.LogWarning($"Sound: {soundName} not found!");
 			return;
 		}
 
@@ -38,7 +35,6 @@ public class AudioManager : MonoBehaviour
 
 		if (s == null)
 		{
-			Debug.LogWarning($"Sound: {soundName} not found!");
 			return;
 		}
 

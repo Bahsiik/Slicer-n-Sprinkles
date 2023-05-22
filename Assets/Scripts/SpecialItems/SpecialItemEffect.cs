@@ -36,7 +36,6 @@ namespace SpecialItems
 
 		private void Update()
 		{
-			
 			transform.Rotate(0, 1, 0, Space.World);
 		}
 
@@ -85,8 +84,7 @@ namespace SpecialItems
 					Invoke(nameof(ResetTime), 3.5f);
 					break;
 				}
-
-
+				
 				case ItemType.SpeedTime: {
 					Time.timeScale = 1.75f;
 					Time.fixedDeltaTime = 0.02f * Time.timeScale;
@@ -124,7 +122,6 @@ namespace SpecialItems
 					Destroy(gameObject);
 					break;
 				}
-
 
 				default: throw new ArgumentOutOfRangeException();
 			}

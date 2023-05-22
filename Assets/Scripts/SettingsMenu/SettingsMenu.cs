@@ -50,7 +50,6 @@ namespace SettingsMenu
 
 		public void ToggleSettings() => settingsPanel.SetActive(!settingsPanel.activeSelf);
 
-		// add lowpass filter to music source if settings panel is active?
 		private void LoadVolumes()
 		{
 			masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
@@ -61,17 +60,5 @@ namespace SettingsMenu
 			SetMusicVolume();
 			SetSfxVolume();
 		}
-
-		// public void ToggleMusic()
-		// {
-		// 	// AudioManager.Instance.ToggleMusic();
-		// 	// AudioManager.Instance.PlaySFX("Button");
-		// }
-		//
-		// public void ToggleSFX()
-		// {
-		// 	// AudioManager.Instance.ToggleSFX();
-		// 	// AudioManager.Instance.PlaySFX("Button");
-		// }
 	}
 }

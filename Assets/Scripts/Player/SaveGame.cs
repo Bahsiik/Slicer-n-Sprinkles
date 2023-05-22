@@ -13,14 +13,14 @@ namespace Player
 	[Serializable]
 	public record SaveGame
 	{
-		public static int slots;
+		public static int Slots;
 		private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
 		public int difficulty;
 		public int ingredientsSliced;
 		public string pseudo;
 		public int score;
 
-		[NonSerialized] public int slot;
+		[NonSerialized] public int Slot;
 
 		static SaveGame() => LoadNumberOfSlots();
 
@@ -58,7 +58,7 @@ namespace Player
 			try
 			{
 				saveGame = (SaveGame) bf.Deserialize(file);
-				saveGame.slot = slot;
+				saveGame.Slot = slot;
 				file.Close();
 			}
 			catch (Exception)
@@ -96,7 +96,7 @@ namespace Player
 			var files = Directory.GetFiles(Application.persistentDataPath);
 
 			// get the highest slot number
-			slots = files
+			Slots = files
 				.Where(static file => _saveFilesRegex.IsMatch(file))
 				.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
 				.DefaultIfEmpty()
@@ -106,7 +106,7 @@ namespace Player
 		public static void SaveIntoLatestSlot()
 		{
 			LoadNumberOfSlots();
-			SaveIntoSlot(slots);
+			SaveIntoSlot(Slots);
 		}
 
 		public static void SaveIntoSlot(int slot)
@@ -122,7 +122,7 @@ namespace Player
 			file.Close();
 
 			Debug.Log($"Saved into slot {slot} with path {path}");
-			slots++;
+			Slots++;
 		}
 	}
 }
