@@ -343,7 +343,7 @@ MonoBehaviour:
   minutes: 0
   hour: 0
   seconds: 0
-  realTime: 1
+  realTime: 0
   pointerSeconds: {fileID: 6354738497224879033}
   pointerMinutes: {fileID: 6354738497224822443}
   pointerHours: {fileID: 6354738497224832685}

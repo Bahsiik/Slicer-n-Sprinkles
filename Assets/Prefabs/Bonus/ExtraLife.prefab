@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonusType: 2
   bonusText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
+  bonusSpawner: {fileID: 0}
 --- !u!33 &4753833641766433990
 MeshFilter:
   m_ObjectHideFlags: 0
