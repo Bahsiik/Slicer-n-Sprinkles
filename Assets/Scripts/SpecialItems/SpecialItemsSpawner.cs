@@ -29,7 +29,7 @@ namespace SpecialItems
 			var position = new Vector3(
 				Random.Range(topLeftPos.x, topRight.transform.position.x),
 				Random.Range(topLeftPos.y, bottomLeft.transform.position.y),
-				-2
+				-3
 			);
 
 			var rotation = bonusItemsList[randomBonus].transform.rotation;
@@ -52,7 +52,6 @@ namespace SpecialItems
 					{
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
-
 					break;
 				}
 
