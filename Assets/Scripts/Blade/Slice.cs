@@ -86,7 +86,7 @@ namespace Blade
 			splash.GetComponent<Image>().color = color;
 			splash.transform.SetParent(uiCanvas.transform);
 			splash.GetComponent<RectTransform>().sizeDelta = new(2.5f, 2.5f);
-			splash.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, -0.5f);
+			splash.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, -1.5f);
 			splash.GetComponent<Image>().sprite = objectsCollision.splashSprite;
 			StartCoroutine(FadeTo(0f, 5f, splash));
 		}
