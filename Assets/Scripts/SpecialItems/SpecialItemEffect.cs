@@ -63,7 +63,7 @@ namespace SpecialItems
 						PlayerStats.Instance.Lives = Difficulty.selectedDifficulty.startingLives;
 
 					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
-					bonusTextObject.UpdateText("+1 Life");
+					bonusTextObject.UpdateText("Extra Life");
 					bonusTextObject.transform.SetParent(_specialItemsSpawner.transform);
 					Destroy(gameObject);
 					break;
