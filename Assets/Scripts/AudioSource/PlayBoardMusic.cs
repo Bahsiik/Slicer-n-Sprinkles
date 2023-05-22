@@ -9,5 +9,6 @@ public class PlayBoardMusic : MonoBehaviour
 		_audioManager = FindObjectOfType<AudioManager>();
 		_audioManager.StopMusic();
 		_audioManager.PlayMusic("PlayBoard Theme");
+		Time.timeScale = 1f;
 	}
 }
