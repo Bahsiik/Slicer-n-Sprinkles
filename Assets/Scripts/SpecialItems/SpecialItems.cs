@@ -1,23 +1,25 @@
 ﻿using System;
+using DifficultyMenu;
 using JetBrains.Annotations;
 using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Bonus
+namespace SpecialItems
 {
-	public class Bonus : MonoBehaviour
+	public class SpecialItems : MonoBehaviour
 	{
-		public enum BonusType
+		public enum ItemType
 		{
 			DoublePoints,
 			SlowTime,
 			ExtraLife
 		}
 
-		public BonusType bonusType;
+		public ItemType bonusType;
 		
-		public BonusText bonusText;
+		[FormerlySerializedAs("bonusText")] public SpecialItemsText specialItemsText;
 		public GameObject bonusSpawner;
 
 		private void Awake()
@@ -31,18 +33,18 @@ namespace Bonus
 
 			switch (bonusType)
 			{
-				case BonusType.DoublePoints: {
+				case ItemType.DoublePoints: {
 					PlayerStats.Instance.DoublePointsActive = true;
 					Invoke(nameof(ResetDoublePoints), 5f);
 					GetComponent<MeshRenderer>().enabled = false;
-					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("Points X2");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					GetComponent<BoxCollider>().enabled = false;
 					break;
 				}
 
-				case BonusType.SlowTime: {
+				case ItemType.SlowTime: {
 					Time.timeScale = 0.5f;
 					Time.fixedDeltaTime = 0.02f * Time.timeScale;
 					GetComponent<MeshRenderer>().enabled = false;
@@ -50,19 +52,19 @@ namespace Bonus
 					{
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
-					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("Slow Time");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					Invoke(nameof(ResetTime), 3.5f);
-					// get the sphere collider and disable it
 					GetComponent<SphereCollider>().enabled = false;
 					break;
 				}
 
-				case BonusType.ExtraLife: {
+				case ItemType.ExtraLife: {
 					PlayerStats.Instance.Lives++;
+					if (PlayerStats.Instance.Lives > Difficulty.selectedDifficulty.startingLives) PlayerStats.Instance.Lives = Difficulty.selectedDifficulty.startingLives; 
 					Destroy(gameObject);
-					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					var bonusTextObject = Instantiate(specialItemsText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("+1 Life");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					GetComponent<SphereCollider>().enabled = false;

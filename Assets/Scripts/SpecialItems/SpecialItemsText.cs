@@ -1,9 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Bonus
+namespace SpecialItems
 {
-	public class BonusText : MonoBehaviour
+	public class SpecialItemsText : MonoBehaviour
 	{
 		private TextMeshProUGUI _textMeshPro;
 		private Animator _animator;

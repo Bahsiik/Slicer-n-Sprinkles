@@ -1,9 +1,9 @@
 using DifficultyMenu;
 using UnityEngine;
 
-namespace Bonus
+namespace SpecialItems
 {
-	public class BonusSpawner : MonoBehaviour
+	public class SpecialItemsSpawner : MonoBehaviour
 	{
 		public GameObject topLeft;
 		public GameObject topRight;
