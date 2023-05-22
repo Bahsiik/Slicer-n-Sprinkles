@@ -15,8 +15,8 @@ namespace Player
 	{
 		public static int slots;
 		private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
-		public int ingredientsSliced;
 		public int difficulty;
+		public int ingredientsSliced;
 		public string pseudo;
 		public int score;
 
@@ -53,9 +53,20 @@ namespace Player
 
 			var bf = new BinaryFormatter();
 			var file = File.Open(path, FileMode.Open);
-			var saveGame = (SaveGame) bf.Deserialize(file);
-			saveGame.slot = slot;
-			file.Close();
+			SaveGame saveGame = null;
+
+			try
+			{
+				saveGame = (SaveGame) bf.Deserialize(file);
+				saveGame.slot = slot;
+				file.Close();
+			}
+			catch (Exception)
+			{
+				file.Close();
+				DeleteSlot(slot);
+				return null;
+			}
 
 			return saveGame;
 		}
