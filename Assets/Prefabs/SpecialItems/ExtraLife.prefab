@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2808806495874293437}
   - component: {fileID: 5989512998213440630}
   - component: {fileID: 2858674108915357951}
+  - component: {fileID: -5023232019850909830}
   m_Layer: 0
   m_Name: ExtraLife
   m_TagString: Untagged
@@ -134,9 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d246e4213274483383978443289de1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusType: 2
-  bonusText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
-  bonusSpawner: {fileID: 0}
+  bonusType: 1
+  specialItemsText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
 --- !u!33 &4753833641766433990
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -234,6 +234,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-5023232019850909830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391626352168287801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b144cd4a719d4df483ba66bb35c3124c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialItemCollider: {fileID: 5989512998213440630}
+  meshRenderer: {fileID: 8056137268909181139}
 --- !u!1 &7620132740929961514
 GameObject:
   m_ObjectHideFlags: 0

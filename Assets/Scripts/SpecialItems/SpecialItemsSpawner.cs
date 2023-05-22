@@ -1,3 +1,4 @@
+using System.Collections;
 using DifficultyMenu;
 using UnityEngine;
 
@@ -8,12 +9,8 @@ namespace SpecialItems
 		public GameObject topLeft;
 		public GameObject topRight;
 		public GameObject bottomLeft;
-
-		public GameObject[] bonusItemsList;
-
+		public SpecialItem[] bonusItemsList;
 		private float _spawnTimer;
-
-
 		private void Start() => _spawnTimer = Random.Range(5f, 10f);
 
 		private void Update()
@@ -24,6 +21,7 @@ namespace SpecialItems
 			SpawnBonus();
 		}
 
+		// ReSharper disable Unity.PerformanceAnalysis
 		private void SpawnBonus()
 		{
 			var randomBonus = Random.Range(0, bonusItemsList.Length);
@@ -36,8 +34,28 @@ namespace SpecialItems
 			);
 
 			var rotation = bonusItemsList[randomBonus].transform.rotation;
-			var bonus = Instantiate(bonusItemsList[randomBonus], position, rotation);
-			Destroy(bonus, Random.Range(Difficulty.selectedDifficulty.bonusDespawnMinDelay, Difficulty.selectedDifficulty.bonusDespawnMaxDelay));
+			var specialItem = Instantiate(bonusItemsList[randomBonus], position, rotation);
+			var time = Random.Range(Difficulty.selectedDifficulty.bonusDespawnMinDelay, Difficulty.selectedDifficulty.bonusDespawnMaxDelay);
+			StartCoroutine(DespawnBonus(time, specialItem));
+		}
+		
+		private IEnumerator DespawnBonus(float time, SpecialItem specialItem)
+		{
+			Debug.Log("Despawning bonus");
+			yield return new WaitForSeconds(time);
+
+			specialItem.DisableItem();
+
+			var specialItemEffect = specialItem.GetComponent<SpecialItemEffect>();
+			if (specialItemEffect.bonusType is SpecialItemEffect.ItemType.SlowTime or SpecialItemEffect.ItemType.SpeedTime)
+			{
+				foreach (Transform child in specialItem.transform.Find("Face/Arrow"))
+				{
+					child.GetComponent<MeshRenderer>().enabled = false;
+				}
+			}
+			
+			Destroy(specialItem, 5f);
 		}
 	}
 }

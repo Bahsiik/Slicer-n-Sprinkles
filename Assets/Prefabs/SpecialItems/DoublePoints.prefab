@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9131030506497748267}
   - component: {fileID: 9120744635840019131}
   - component: {fileID: 1911006695215542726}
-  - component: {fileID: 4491376904440788272}
   - component: {fileID: 4445123228271083383}
   - component: {fileID: 4700297990483038908}
   - component: {fileID: 6664158200944175783}
+  - component: {fileID: 1041613035722435943}
   m_Layer: 0
   m_Name: DoublePoints
   m_TagString: Untagged
@@ -101,22 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusType: 0
-  bonusText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
-  bonusSpawner: {fileID: 0}
---- !u!64 &4491376904440788272
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133686012828299409}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2efa3b0a3316922428856a1712e7b6fe, type: 3}
+  specialItemsText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
 --- !u!54 &4445123228271083383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,3 +149,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1041613035722435943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133686012828299409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b144cd4a719d4df483ba66bb35c3124c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialItemCollider: {fileID: 4700297990483038908}
+  meshRenderer: {fileID: 9120744635840019131}

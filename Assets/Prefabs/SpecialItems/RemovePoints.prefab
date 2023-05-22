@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 3592441719682152976}
   - component: {fileID: 769499064022180110}
   - component: {fileID: 4098389152410007566}
+  - component: {fileID: 1122288342370697519}
   m_Layer: 6
   m_Name: RemovePoints
   m_TagString: Untagged
@@ -179,9 +180,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d246e4213274483383978443289de1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusType: 4
+  bonusType: 2
   specialItemsText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
-  specialItemsSpawner: {fileID: 0}
+--- !u!114 &1122288342370697519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226936709144724680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b144cd4a719d4df483ba66bb35c3124c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialItemCollider: {fileID: 769499064022180110}
+  meshRenderer: {fileID: 3460912558099496744}
 --- !u!1 &9159491401890727490
 GameObject:
   m_ObjectHideFlags: 0
