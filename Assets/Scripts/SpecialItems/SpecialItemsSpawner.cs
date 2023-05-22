@@ -41,7 +41,6 @@ namespace SpecialItems
 		
 		private IEnumerator DespawnBonus(float time, SpecialItem specialItem)
 		{
-			Debug.Log("Despawning bonus");
 			yield return new WaitForSeconds(time);
 
 			specialItem.DisableItem();

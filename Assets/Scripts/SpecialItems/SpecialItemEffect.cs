@@ -132,14 +132,12 @@ namespace SpecialItems
 
 		private void ResetDoublePoints()
 		{
-			Debug.Log("Reset double points");
 			PlayerStats.Instance.DoublePointsActive = false;
 			Destroy(gameObject);
 		}
 
 		private void ResetTime()
 		{
-			Debug.Log("Reset time scale");
 			Time.timeScale = 1f;
 			Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			Destroy(gameObject);
