@@ -38,6 +38,7 @@ namespace Bonus
 					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("Points X2");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
+					GetComponent<BoxCollider>().enabled = false;
 					break;
 				}
 
@@ -53,6 +54,8 @@ namespace Bonus
 					bonusTextObject.UpdateText("Slow Time");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					Invoke(nameof(ResetTime), 3.5f);
+					// get the sphere collider and disable it
+					GetComponent<SphereCollider>().enabled = false;
 					break;
 				}
 
@@ -62,6 +65,7 @@ namespace Bonus
 					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
 					bonusTextObject.UpdateText("+1 Life");
 					bonusTextObject.transform.SetParent(bonusSpawner.transform);
+					GetComponent<SphereCollider>().enabled = false;
 					break;
 				}
 
