@@ -1,3 +1,4 @@
+using DifficultyMenu;
 using UnityEngine;
 
 namespace Bonus

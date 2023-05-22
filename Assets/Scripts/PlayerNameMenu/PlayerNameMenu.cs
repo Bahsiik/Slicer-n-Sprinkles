@@ -1,20 +1,24 @@
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerNameMenu : MonoBehaviour
+namespace PlayerNameMenu
 {
-	public TMP_InputField playerNameInputField;
-	public Button startButton;
-
-	public void UpdateValue() => startButton.interactable = playerNameInputField.text.Length > 0;
-
-	public void StartGame()
+	public class PlayerNameMenu : MonoBehaviour
 	{
-		PlayerStats.playerName = playerNameInputField.text;
-		SceneManager.LoadScene("PlayBoard");
-	}
+		public TMP_InputField playerNameInputField;
+		public Button startButton;
 
-	public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
+		public void UpdateValue() => startButton.interactable = playerNameInputField.text.Length > 0;
+
+		public void StartGame()
+		{
+			PlayerStats.playerName = playerNameInputField.text;
+			SceneManager.LoadScene("PlayBoard");
+		}
+
+		public void GoToMainMenu() => SceneManager.LoadScene("MainMenu");
+	}
 }

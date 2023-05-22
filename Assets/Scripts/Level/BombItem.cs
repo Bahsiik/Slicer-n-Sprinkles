@@ -1,26 +1,31 @@
-﻿using JetBrains.Annotations;
+﻿using AudioSource;
+using JetBrains.Annotations;
+using Player;
 using UnityEngine;
 
-public class BombItem : MonoBehaviour
+namespace Level
 {
-	private const float DestroyPositionY = -8f;
-	private AudioManager _audioManager;
-
-	private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
-	private void Update()
+	public class BombItem : MonoBehaviour
 	{
-		if (!(transform.position.y < DestroyPositionY)) return;
-		Destroy(gameObject);
-	}
+		private const float DestroyPositionY = -8f;
+		private AudioManager _audioManager;
 
-	private void OnTriggerEnter([NotNull] Collider other)
-	{
-		if (!other.CompareTag("Player")) return;
+		private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-		PlayerStats.Instance.Lives--;
-		PlayerStats.Instance.Points -= 10;
-		_audioManager.PlaySfx("Bomb");
-		Destroy(gameObject);
+		private void Update()
+		{
+			if (!(transform.position.y < DestroyPositionY)) return;
+			Destroy(gameObject);
+		}
+
+		private void OnTriggerEnter([NotNull] Collider other)
+		{
+			if (!other.CompareTag("Player")) return;
+
+			PlayerStats.Instance.Lives--;
+			PlayerStats.Instance.Points -= 10;
+			_audioManager.PlaySfx("Bomb");
+			Destroy(gameObject);
+		}
 	}
 }

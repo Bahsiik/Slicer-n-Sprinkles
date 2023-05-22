@@ -1,27 +1,31 @@
 using JetBrains.Annotations;
+using Player;
 using TMPro;
 using UnityEngine;
 
-public class LeaderboardEntry : MonoBehaviour
+namespace LeaderboardMenu
 {
-	public TextMeshProUGUI pseudo;
-	public TextMeshProUGUI score;
-	public TextMeshProUGUI ingredientsSliced;
-	public int slot;
-
-	private void UpdateEntry([NotNull] string pseudo, int score, int ingredientsSliced, int slot)
+	public class LeaderboardEntry : MonoBehaviour
 	{
-		this.pseudo.text = pseudo;
-		this.score.text = score.ToString();
-		this.ingredientsSliced.text = ingredientsSliced.ToString();
-		this.slot = slot;
-	}
+		public TextMeshProUGUI pseudo;
+		public TextMeshProUGUI score;
+		public TextMeshProUGUI ingredientsSliced;
+		public int slot;
 
-	public void UpdateEntry([NotNull] SaveGame saveGame, int slot) => UpdateEntry(saveGame.pseudo, saveGame.score, saveGame.ingredientsSliced, slot);
+		private void UpdateEntry([NotNull] string pseudo, int score, int ingredientsSliced, int slot)
+		{
+			this.pseudo.text = pseudo;
+			this.score.text = score.ToString();
+			this.ingredientsSliced.text = ingredientsSliced.ToString();
+			this.slot = slot;
+		}
 
-	public void OnDeleteButtonClicked()
-	{
-		SaveGame.DeleteSlot(slot);
-		Destroy(gameObject);
+		public void UpdateEntry([NotNull] SaveGame saveGame, int slot) => UpdateEntry(saveGame.pseudo, saveGame.score, saveGame.ingredientsSliced, slot);
+
+		public void OnDeleteButtonClicked()
+		{
+			SaveGame.DeleteSlot(slot);
+			Destroy(gameObject);
+		}
 	}
 }

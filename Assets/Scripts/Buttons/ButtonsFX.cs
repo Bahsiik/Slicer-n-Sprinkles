@@ -1,10 +1,11 @@
+using AudioSource;
 using UnityEngine;
 
 namespace Buttons
 {
 	public class ButtonsFX : MonoBehaviour
 	{
-		[SerializeField] private AudioSource audioSource;
+		[SerializeField] private UnityEngine.AudioSource audioSource;
 
 		private AudioManager _audioManager;
 

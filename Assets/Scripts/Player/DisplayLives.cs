@@ -1,33 +1,37 @@
+using DifficultyMenu;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayLives : MonoBehaviour
+namespace Player
 {
-	public Sprite fullHeart;
-	public Sprite emptyHeart;
-	public GameObject livesIcons;
-	private Image[] _hearts;
-
-	private void Awake()
+	public class DisplayLives : MonoBehaviour
 	{
-		for (var i = 0; i < Difficulty.selectedDifficulty.startingLives; i++)
+		public Sprite fullHeart;
+		public Sprite emptyHeart;
+		public GameObject livesIcons;
+		private Image[] _hearts;
+
+		private void Awake()
 		{
-			var heart = new GameObject("Heart", typeof(Image));
-			heart.transform.SetParent(livesIcons.transform);
-			heart.GetComponent<RectTransform>().sizeDelta = new(25, 25);
-			heart.GetComponent<Image>().sprite = fullHeart;
+			for (var i = 0; i < Difficulty.selectedDifficulty.startingLives; i++)
+			{
+				var heart = new GameObject("Heart", typeof(Image));
+				heart.transform.SetParent(livesIcons.transform);
+				heart.GetComponent<RectTransform>().sizeDelta = new(25, 25);
+				heart.GetComponent<Image>().sprite = fullHeart;
+			}
+
+			_hearts = livesIcons.GetComponentsInChildren<Image>();
 		}
 
-		_hearts = livesIcons.GetComponentsInChildren<Image>();
-	}
-
-	private void Update()
-	{
-		for (var i = 0; i < _hearts.Length; i++)
+		private void Update()
 		{
-			_hearts[i].sprite = i < PlayerStats.Instance.Lives ? fullHeart : emptyHeart;
+			for (var i = 0; i < _hearts.Length; i++)
+			{
+				_hearts[i].sprite = i < PlayerStats.Instance.Lives ? fullHeart : emptyHeart;
 
-			_hearts[i].enabled = i < Difficulty.selectedDifficulty.startingLives;
+				_hearts[i].enabled = i < Difficulty.selectedDifficulty.startingLives;
+			}
 		}
 	}
 }

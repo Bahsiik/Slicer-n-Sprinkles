@@ -1,33 +1,37 @@
 ﻿using System.Collections.Generic;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderboardList : MonoBehaviour
+namespace LeaderboardMenu
 {
-	public GameObject leaderboardEntryPrefab;
-
-	public List<LeaderboardEntry> leaderboardEntries = new();
-
-	public Scrollbar scrollbar;
-	public TextMeshProUGUI noEntryText;
-	public VerticalLayoutGroup verticalLayoutGroup;
-
-	private void Awake()
+	public class LeaderboardList : MonoBehaviour
 	{
-		var leaderboard = SaveGame.LoadAllData();
-		leaderboard.Sort(static (a, b) => b.score.CompareTo(a.score));
+		public GameObject leaderboardEntryPrefab;
 
-		foreach (var saveGame in leaderboard)
+		public List<LeaderboardEntry> leaderboardEntries = new();
+
+		public Scrollbar scrollbar;
+		public TextMeshProUGUI noEntryText;
+		public VerticalLayoutGroup verticalLayoutGroup;
+
+		private void Awake()
 		{
-			var leaderboardEntry = Instantiate(leaderboardEntryPrefab, transform).GetComponent<LeaderboardEntry>();
-			leaderboardEntry.UpdateEntry(saveGame, saveGame.slot);
-			leaderboardEntries.Add(leaderboardEntry);
-			leaderboardEntry.transform.SetParent(verticalLayoutGroup.transform);
+			var leaderboard = SaveGame.LoadAllData();
+			leaderboard.Sort(static (a, b) => b.score.CompareTo(a.score));
+
+			foreach (var saveGame in leaderboard)
+			{
+				var leaderboardEntry = Instantiate(leaderboardEntryPrefab, transform).GetComponent<LeaderboardEntry>();
+				leaderboardEntry.UpdateEntry(saveGame, saveGame.slot);
+				leaderboardEntries.Add(leaderboardEntry);
+				leaderboardEntry.transform.SetParent(verticalLayoutGroup.transform);
+			}
+
+			if (leaderboardEntries.Count > 0) noEntryText.gameObject.SetActive(false);
 		}
 
-		if (leaderboardEntries.Count > 0) noEntryText.gameObject.SetActive(false);
+		private void Start() => scrollbar.value = 1f;
 	}
-
-	private void Start() => scrollbar.value = 1f;
 }

@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class Sound
+namespace AudioSource
 {
-	public string soundName;
-	public AudioClip clip;
+	[Serializable]
+	public class Sound
+	{
+		public string soundName;
+		public AudioClip clip;
+	}
 }

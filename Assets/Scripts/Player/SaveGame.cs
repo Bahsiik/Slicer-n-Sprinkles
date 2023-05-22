@@ -4,110 +4,114 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
+using DifficultyMenu;
 using JetBrains.Annotations;
 using UnityEngine;
 
-[Serializable]
-public record SaveGame
+namespace Player
 {
-	public static int slots;
-	private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
-	public int ingredientsSliced;
-	public int difficulty;
-	public string pseudo;
-	public int score;
-
-	[NonSerialized] public int slot;
-
-	static SaveGame() => LoadNumberOfSlots();
-
-	public SaveGame(int score, int ingredientsSliced)
+	[Serializable]
+	public record SaveGame
 	{
-		this.score = score;
-		this.ingredientsSliced = ingredientsSliced;
-	}
+		public static int slots;
+		private static Regex _saveFilesRegex = new("savegame(\\d+)\\.dat");
+		public int ingredientsSliced;
+		public int difficulty;
+		public string pseudo;
+		public int score;
 
-	public SaveGame([NotNull] PlayerStats playerStats)
-	{
-		score = playerStats.Points;
-		ingredientsSliced = playerStats.ingredientsSliced;
-		difficulty = Difficulty.selectedDifficulty.index;
-		pseudo = PlayerStats.playerName;
-	}
+		[NonSerialized] public int slot;
 
-	public static void DeleteSlot(int slot)
-	{
-		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
-		if (!File.Exists(path)) return;
-		File.Delete(path);
-	}
+		static SaveGame() => LoadNumberOfSlots();
 
-	[CanBeNull]
-	public static SaveGame LoadDataFromSlot(int slot)
-	{
-		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
-		if (!File.Exists(path)) return null;
+		public SaveGame(int score, int ingredientsSliced)
+		{
+			this.score = score;
+			this.ingredientsSliced = ingredientsSliced;
+		}
 
-		var bf = new BinaryFormatter();
-		var file = File.Open(path, FileMode.Open);
-		var saveGame = (SaveGame) bf.Deserialize(file);
-		saveGame.slot = slot;
-		file.Close();
+		public SaveGame([NotNull] PlayerStats playerStats)
+		{
+			score = playerStats.Points;
+			ingredientsSliced = playerStats.ingredientsSliced;
+			difficulty = Difficulty.selectedDifficulty.index;
+			pseudo = PlayerStats.playerName;
+		}
 
-		return saveGame;
-	}
+		public static void DeleteSlot(int slot)
+		{
+			var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
+			if (!File.Exists(path)) return;
+			File.Delete(path);
+		}
 
-	[NotNull]
-	public static List<SaveGame> LoadAllData()
-	{
-		var files = Directory.GetFiles(Application.persistentDataPath);
+		[CanBeNull]
+		public static SaveGame LoadDataFromSlot(int slot)
+		{
+			var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
+			if (!File.Exists(path)) return null;
 
-		return files
-			.Where(static file => _saveFilesRegex.IsMatch(file))
-			.Select(static file => LoadDataFromSlot(int.Parse(_saveFilesRegex.Match(file).Groups[1].Value)))
-			.Where(
-				static (saveGame, index) => {
-					if (saveGame?.pseudo != null) return true;
+			var bf = new BinaryFormatter();
+			var file = File.Open(path, FileMode.Open);
+			var saveGame = (SaveGame) bf.Deserialize(file);
+			saveGame.slot = slot;
+			file.Close();
 
-					DeleteSlot(index);
-					Debug.Log($"Deleted slot {index} because it was corrupted");
-					return false;
-				}
-			)
-			.ToList();
-	}
+			return saveGame;
+		}
 
-	private static void LoadNumberOfSlots()
-	{
-		var files = Directory.GetFiles(Application.persistentDataPath);
+		[NotNull]
+		public static List<SaveGame> LoadAllData()
+		{
+			var files = Directory.GetFiles(Application.persistentDataPath);
 
-		// get the highest slot number
-		slots = files
-			.Where(static file => _saveFilesRegex.IsMatch(file))
-			.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
-			.DefaultIfEmpty()
-			.Max();
-	}
+			return files
+				.Where(static file => _saveFilesRegex.IsMatch(file))
+				.Select(static file => LoadDataFromSlot(int.Parse(_saveFilesRegex.Match(file).Groups[1].Value)))
+				.Where(
+					static (saveGame, index) => {
+						if (saveGame?.pseudo != null) return true;
 
-	public static void SaveIntoLatestSlot()
-	{
-		LoadNumberOfSlots();
-		SaveIntoSlot(slots);
-	}
+						DeleteSlot(index);
+						Debug.Log($"Deleted slot {index} because it was corrupted");
+						return false;
+					}
+				)
+				.ToList();
+		}
 
-	public static void SaveIntoSlot(int slot)
-	{
-		var saveGame = new SaveGame(PlayerStats.Instance);
-		var bf = new BinaryFormatter();
+		private static void LoadNumberOfSlots()
+		{
+			var files = Directory.GetFiles(Application.persistentDataPath);
 
-		var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
-		if (File.Exists(path)) File.Delete(path);
+			// get the highest slot number
+			slots = files
+				.Where(static file => _saveFilesRegex.IsMatch(file))
+				.Select(static s => int.Parse(_saveFilesRegex.Match(s).Groups[1].Value) + 1)
+				.DefaultIfEmpty()
+				.Max();
+		}
 
-		var file = File.Create(path);
-		bf.Serialize(file, saveGame);
-		file.Close();
+		public static void SaveIntoLatestSlot()
+		{
+			LoadNumberOfSlots();
+			SaveIntoSlot(slots);
+		}
 
-		Debug.Log($"Saved into slot {slot} with path {path}");
-		slots++;
+		public static void SaveIntoSlot(int slot)
+		{
+			var saveGame = new SaveGame(PlayerStats.Instance);
+			var bf = new BinaryFormatter();
+
+			var path = $"{Application.persistentDataPath}/savegame{slot}.dat";
+			if (File.Exists(path)) File.Delete(path);
+
+			var file = File.Create(path);
+			bf.Serialize(file, saveGame);
+			file.Close();
+
+			Debug.Log($"Saved into slot {slot} with path {path}");
+			slots++;
+		}
 	}
 }

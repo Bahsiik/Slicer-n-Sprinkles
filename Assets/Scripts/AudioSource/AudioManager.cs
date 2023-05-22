@@ -1,46 +1,49 @@
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace AudioSource
 {
-	[Header("---Audio Sources---"), SerializeField]
-	private AudioSource musicSource;
-
-	[SerializeField] private AudioSource sfxSource;
-
-	[Header("---Audio Clips---"), SerializeField]
-	private Sound[] musicClips;
-
-	[SerializeField] private Sound[] sfxClips;
-
-	private void Start() => PlayMusic("Theme");
-
-	private void PlayMusic(string soundName)
+	public class AudioManager : MonoBehaviour
 	{
-		var s = Array.Find(musicClips, sound => sound.soundName == soundName);
+		[Header("---Audio Sources---"), SerializeField]
+		private UnityEngine.AudioSource musicSource;
 
-		if (s == null)
+		[SerializeField] private UnityEngine.AudioSource sfxSource;
+
+		[Header("---Audio Clips---"), SerializeField]
+		private Sound[] musicClips;
+
+		[SerializeField] private Sound[] sfxClips;
+
+		private void Start() => PlayMusic("Theme");
+
+		private void PlayMusic(string soundName)
 		{
-			Debug.LogWarning($"Sound: {soundName} not found!");
-			return;
+			var s = Array.Find(musicClips, sound => sound.soundName == soundName);
+
+			if (s == null)
+			{
+				Debug.LogWarning($"Sound: {soundName} not found!");
+				return;
+			}
+
+			musicSource.clip = s.clip;
+			musicSource.Play();
 		}
 
-		musicSource.clip = s.clip;
-		musicSource.Play();
-	}
-
-	public void PlaySfx(string soundName)
-	{
-		var s = Array.Find(sfxClips, sound => sound.soundName == soundName);
-
-		if (s == null)
+		public void PlaySfx(string soundName)
 		{
-			Debug.LogWarning($"Sound: {soundName} not found!");
-			return;
+			var s = Array.Find(sfxClips, sound => sound.soundName == soundName);
+
+			if (s == null)
+			{
+				Debug.LogWarning($"Sound: {soundName} not found!");
+				return;
+			}
+
+			sfxSource.PlayOneShot(s.clip);
 		}
 
-		sfxSource.PlayOneShot(s.clip);
+		public void StopMusic() => musicSource.Stop();
 	}
-
-	public void StopMusic() => musicSource.Stop();
 }

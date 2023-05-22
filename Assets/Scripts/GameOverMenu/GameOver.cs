@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using PauseMenu;
+using Player;
+using TMPro;
 using UnityEngine;
 
 namespace GameOverMenu
