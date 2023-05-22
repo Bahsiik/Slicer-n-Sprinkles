@@ -1,6 +1,10 @@
-﻿using AudioSource;
+﻿using System;
+using System.Collections;
+using AudioSource;
+using CartoonFX;
 using JetBrains.Annotations;
 using Player;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Level
@@ -9,6 +13,8 @@ namespace Level
 	{
 		private const float DestroyPositionY = -8f;
 		private AudioManager _audioManager;
+		public CFXR_Effect bombExplosionFX;
+		public ParticleSystem bombParticleSystem;
 
 		private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
@@ -22,10 +28,16 @@ namespace Level
 		{
 			if (!other.CompareTag("Player")) return;
 
-			PlayerStats.Instance.Lives--;
-			PlayerStats.Instance.Points -= 10;
+			bombExplosionFX.enabled = true;
+			bombParticleSystem.Play();
 			_audioManager.PlaySfx("Bomb");
-			Destroy(gameObject);
+			StartCoroutine(ShowGameOverMenu());
+		}
+		
+		private IEnumerator	ShowGameOverMenu()
+		{
+			yield return new WaitForSeconds(0.3f);
+			PlayerStats.Instance.Lives = 0;
 		}
 	}
 }
