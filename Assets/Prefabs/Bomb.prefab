@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombExplosionFX: {fileID: 8248002735519314470}
   bombParticleSystem: {fileID: 8914495086177054632}
+  meshRenderer: {fileID: 3460912558099496744}
 --- !u!1 &9159491401890727490
 GameObject:
   m_ObjectHideFlags: 0

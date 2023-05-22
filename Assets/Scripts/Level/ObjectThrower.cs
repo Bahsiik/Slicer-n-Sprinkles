@@ -8,6 +8,7 @@ namespace Level
 {
 	public class ObjectThrower : MonoBehaviour
 	{
+		public static bool isPaused;
 		public List<GameObject> objectsToThrow;
 		public GameObject bombPrefab;
 		public float randomThrowPositionXStart = -7;
@@ -18,7 +19,12 @@ namespace Level
 		private AudioManager _audioManager;
 		private int _currentObjectIndex;
 
-		private void Awake() => _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+		private void Awake()
+		{
+			Physics.gravity = new(0, -9.81f, 0);
+			isPaused = false;
+			_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+		}
 
 		private void Start() => StartCoroutine(ThrowRandomObjects());
 
@@ -36,6 +42,8 @@ namespace Level
 
 		private void ThrowRandomObject()
 		{
+			if (isPaused) return;
+
 			var centerPosition = transform.position;
 			var prefab = Random.value < _diff.bombProbability ? bombPrefab : objectsToThrow[_currentObjectIndex];
 

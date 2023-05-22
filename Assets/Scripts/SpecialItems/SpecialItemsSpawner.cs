@@ -21,7 +21,6 @@ namespace SpecialItems
 			SpawnBonus();
 		}
 
-		// ReSharper disable Unity.PerformanceAnalysis
 		private void SpawnBonus()
 		{
 			var randomBonus = Random.Range(0, bonusItemsList.Length);
@@ -38,7 +37,7 @@ namespace SpecialItems
 			var time = Random.Range(Difficulty.selectedDifficulty.bonusDespawnMinDelay, Difficulty.selectedDifficulty.bonusDespawnMaxDelay);
 			StartCoroutine(DespawnBonus(time, specialItem));
 		}
-		
+
 		private IEnumerator DespawnBonus(float time, SpecialItem specialItem)
 		{
 			yield return new WaitForSeconds(time);

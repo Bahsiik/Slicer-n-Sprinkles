@@ -1,4 +1,5 @@
 using System;
+using AudioSource;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -9,12 +10,12 @@ public class AudioManager : MonoBehaviour
 	[SerializeField] private UnityEngine.AudioSource sfxSource;
 
 	[Header("---Audio Clips---"), SerializeField]
-	private AudioSource.Sound[] musicClips;
+	private Sound[] musicClips;
 
-	[SerializeField] private AudioSource.Sound[] sfxClips;
+	[SerializeField] private Sound[] sfxClips;
 
 	// private void Start() => PlayMusic("Theme");
-	
+
 	private void Awake() => DontDestroyOnLoad(gameObject);
 
 	public void PlayMusic(string soundName)

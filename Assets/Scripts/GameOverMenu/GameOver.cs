@@ -23,7 +23,7 @@ namespace GameOverMenu
 			_isDead = false;
 		}
 
-		public static void ToggleGameOver()
+		public static void DisplayGameOver()
 		{
 			if (!_isDead) _isDead = true;
 			else return;
@@ -38,7 +38,7 @@ namespace GameOverMenu
 			if (PlayerStats.Instance.Points <= highScore) _highScoreText.gameObject.SetActive(false);
 			else _highScoreText.gameObject.GetComponent<Animator>().Play("NewHighScoreAnimation", -1, 0f);
 
-			Time.timeScale = _gameOverPanel.activeSelf ? 0f : 1f;
+			Time.timeScale = 0f;
 			TogglePauseMenu.isPaused = true;
 		}
 	}

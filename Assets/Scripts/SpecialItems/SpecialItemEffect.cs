@@ -11,8 +11,6 @@ namespace SpecialItems
 	public class SpecialItemEffect : MonoBehaviour
 	{
 
-		private SpecialItem _specialItem;
-
 		public enum ItemType
 		{
 			DoublePoints,
@@ -20,12 +18,14 @@ namespace SpecialItems
 			RemovePoints,
 			RemoveLife,
 			SlowTime,
-			SpeedTime,
+			SpeedTime
 		}
 
 		public ItemType bonusType;
 
 		[FormerlySerializedAs("bonusText")] public SpecialItemsText specialItemsText;
+
+		private SpecialItem _specialItem;
 		private GameObject _specialItemsSpawner;
 
 		private void Awake()

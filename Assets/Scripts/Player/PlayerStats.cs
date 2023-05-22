@@ -56,7 +56,7 @@ namespace Player
 		{
 			if (TogglePauseMenu.isPaused) return;
 
-			if (IsDead()) GameOver.ToggleGameOver();
+			if (IsDead()) GameOver.DisplayGameOver();
 		}
 
 		/// <summary>

@@ -229,18 +229,18 @@
 		#endif
 	#endif
 
-			// Ambient Lighting / Light Probes, per-vertex if no normal map
+// Ambient Lighting / Light Probes, per-vertex if no normal map
 	#if defined(LIGHTING_INDIRECT) && !_NORMALMAP
 			half3 shColor = ShadeSHPerVertex(v.normal.xyz, half3(0,0,0));
 			o.shColor = shColor;
 	#endif
 
-			/*
-	#if !defined(PASS_SHADOW_CASTER)
-			// Shadows Receiving
-			TRANSFER_SHADOW(o);
-	#endif
-			*/
+/*
+#if !defined(PASS_SHADOW_CASTER)
+// Shadows Receiving
+TRANSFER_SHADOW(o);
+#endif
+*/
 
 	#if defined(PASS_SHADOW_CASTER)
 			vert(v, o, opos);
@@ -331,8 +331,8 @@
 			#define main_uv i.uv_random
 		#endif
 
-			// ================================================================
-			// Color & Alpha
+// ================================================================
+// Color & Alpha
 
 		#if _CFXR_SINGLE_CHANNEL
 			half4 mainTex = half4(1, 1, 1, tex2D(_MainTex, main_uv.xy).r);
@@ -373,11 +373,11 @@
 			#endif
 		#endif
 
-			/*
-		#if _CFXR_GRADIENTMAP
-			mainTex.rgb = tex2D(_GradientMap, mainTex.a).rgb;
-		#endif
-			*/
+/*
+#if _CFXR_GRADIENTMAP
+mainTex.rgb = tex2D(_GradientMap, mainTex.a).rgb;
+#endif
+*/
 
 		#if _CFXR_FONT_COLORS
 			half3 particleColor = mainTex.b * i.color.rgb + mainTex.g * i.custom1.rgb + mainTex.r * i.secondColor.rgb;
@@ -401,16 +401,16 @@
 			particleColor.rgb *= _HdrMultiply * GLOBAL_HDR_MULTIPLIER;
 		#endif
 
-			/*
-		#if !defined(PASS_SHADOW_CASTER)
-			// Shadows Receiving
-			half shadows = SHADOW_ATTENUATION(i);
-			particleColor.rgb *= saturate(shadows + (1.0 - _ReceivedShadowsStrength));
-		#endif
-			*/
+/*
+#if !defined(PASS_SHADOW_CASTER)
+// Shadows Receiving
+half shadows = SHADOW_ATTENUATION(i);
+particleColor.rgb *= saturate(shadows + (1.0 - _ReceivedShadowsStrength));
+#endif
+*/
 
-			// ================================================================
-			// Lighting
+// ================================================================
+// Lighting
 
 	#if !defined(PASS_SHADOW_CASTER)
 
@@ -441,7 +441,7 @@
 			#endif
 		#endif
 
-			// - Direct
+// - Direct
 		#if defined(LIGHTING_DIRECT)
 			// Main Directional
 			half ndl = dot(normalWS, mainLightDir);
@@ -495,7 +495,7 @@
 			#endif
 		#endif
 
-			// - Indirect
+// - Indirect
 		#if defined(LIGHTING_INDIRECT)
 			#if _NORMALMAP
 					half3 shColor = ShadeSHPerPixel(normalWS, half3(0,0,0), float3(0,0,0));
@@ -511,8 +511,8 @@
 
 	#endif
 
-			// ================================================================
-			// Dissolve
+// ================================================================
+// Dissolve
 
 		#if _CFXR_DISSOLVE
 			#if _CFXR_DISSOLVE_ALONG_UV_X
@@ -531,8 +531,8 @@
 			half doubleDissolveWidth = 0;
 		#endif
 
-			// ================================================================
-			//
+// ================================================================
+//
 
 		#if defined(PASS_SHADOW_CASTER)
 			return frag(i, vpos, particleColor, particleAlpha, dissolveTex, dissolveTime, doubleDissolveWidth);
@@ -726,8 +726,8 @@
 				half dissolveTime = 0;
 			#endif
 
-				// ================================================================
-				//
+// ================================================================
+//
 
 			#if defined(PASS_SHADOW_CASTER)
 				return frag(i, vpos, particleColor, particleAlpha, dissolveTex, dissolveTime, 0.0);
@@ -1129,8 +1129,8 @@
 				particleColor.rgb *= _HdrMultiply * GLOBAL_HDR_MULTIPLIER;
 			#endif
 
-				// ================================================================
-				// Dissolve
+// ================================================================
+// Dissolve
 
 			#if _CFXR_DISSOLVE
 				half dissolveTex = TEX2D_MAIN_TEXCOORD(_DissolveTex).r;
@@ -1141,8 +1141,8 @@
 				half dissolveTime = 0;
 			#endif
 
-				// ================================================================
-				//
+// ================================================================
+//
 
 			#if defined(PASS_SHADOW_CASTER)
 				return frag(i, vpos, particleColor, particleAlpha, dissolveTex, dissolveTime, 0.0);
