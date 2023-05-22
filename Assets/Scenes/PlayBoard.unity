@@ -693,6 +693,8 @@ GameObject:
   - component: {fileID: 351978491}
   - component: {fileID: 351978490}
   - component: {fileID: 351978493}
+  - component: {fileID: 351978489}
+  - component: {fileID: 351978494}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -810,8 +812,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1100437860}
-        m_TargetAssemblyTypeName: PauseMenu.TogglePauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 351978494}
+        m_TargetAssemblyTypeName: GameOverMenu.GameOverMenuButtons, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -870,6 +872,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &351978494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351978487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53c68f7f44c3646ae3b2457fa10528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &383450623
@@ -3836,7 +3850,8 @@ GameObject:
   - component: {fileID: 1429467970}
   - component: {fileID: 1429467969}
   - component: {fileID: 1429467968}
-  - component: {fileID: 1429467967}
+  - component: {fileID: 1429467971}
+  - component: {fileID: 1429467972}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -3909,9 +3924,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1100437859}
-        m_TargetAssemblyTypeName: GameOverMenuButtons, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1429467972}
+        m_TargetAssemblyTypeName: GameOverMenu.GameOverMenuButtons, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3969,6 +3984,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37eaebf3f2daab242a1b72412180abd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1429467972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429467965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53c68f7f44c3646ae3b2457fa10528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1450796909
