@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using AudioSource;
 using DifficultyMenu;
 using UnityEngine;
 using Utils;
@@ -9,7 +8,6 @@ namespace Level
 {
 	public class ObjectThrower : MonoBehaviour
 	{
-
 		public List<GameObject> objectsToThrow;
 		public GameObject bombPrefab;
 		public float randomThrowPositionXStart = -7;
@@ -44,8 +42,20 @@ namespace Level
 			var throwPosition = new Vector3(Random.Range(randomThrowPositionXStart, randomThrowPositionXEnd), centerPosition.y, centerPosition.z);
 
 			// objects thrown angle is affected by the distance from the center inversely
-			var throwAngle = Random.Range(-_diff.randomAngleMax, _diff.randomAngleMax) *
-							 (1 - Mathf.Abs(throwPosition.x - centerPosition.x) / (randomThrowPositionXEnd - randomThrowPositionXStart));
+			var throwAngleMin = -_diff.randomAngleMax;
+			var throwAngleMax = _diff.randomAngleMax;
+
+			if (throwPosition.x > centerPosition.x)
+			{
+				// More likely to throw right
+				throwAngleMin *= 1 - (throwPosition.x - centerPosition.x) / (randomThrowPositionXEnd - centerPosition.x);
+			} else
+			{
+				// More likely to throw left
+				throwAngleMax *= 1 - (centerPosition.x - throwPosition.x) / (centerPosition.x - randomThrowPositionXStart);
+			}
+
+			var throwAngle = Random.Range(throwAngleMin, throwAngleMax);
 
 			var throwForce = Random.Range(throwForceMin, throwForceMax);
 			var throwDirection = Quaternion.Euler(0, 0, throwAngle);
