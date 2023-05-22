@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 using Player;
+using TMPro;
 using UnityEngine;
 
 namespace Bonus
@@ -15,12 +16,18 @@ namespace Bonus
 		}
 
 		public BonusType bonusType;
+		
+		public BonusText bonusText;
+		public GameObject bonusSpawner;
+
+		private void Awake()
+		{
+			bonusSpawner = GameObject.Find("BonusSpawner");
+		}
 
 		private void OnTriggerEnter([NotNull] Collider other)
 		{
-			Debug.Log("test");
 			if (!other.CompareTag("Player")) return;
-			Debug.Log("test2");
 
 			switch (bonusType)
 			{
@@ -28,7 +35,9 @@ namespace Bonus
 					PlayerStats.Instance.DoublePointsActive = true;
 					Invoke(nameof(ResetDoublePoints), 5f);
 					GetComponent<MeshRenderer>().enabled = false;
-
+					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					bonusTextObject.UpdateText("Points X2");
+					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					break;
 				}
 
@@ -36,13 +45,13 @@ namespace Bonus
 					Time.timeScale = 0.5f;
 					Time.fixedDeltaTime = 0.02f * Time.timeScale;
 					GetComponent<MeshRenderer>().enabled = false;
-
 					foreach (Transform child in transform.GetChild(0))
 					{
-						Debug.Log("child name : " + child.name);
 						child.GetComponent<MeshRenderer>().enabled = false;
 					}
-
+					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					bonusTextObject.UpdateText("Slow Time");
+					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					Invoke(nameof(ResetTime), 3.5f);
 					break;
 				}
@@ -50,6 +59,9 @@ namespace Bonus
 				case BonusType.ExtraLife: {
 					PlayerStats.Instance.Lives++;
 					Destroy(gameObject);
+					var bonusTextObject = Instantiate(bonusText, transform.position, Quaternion.identity);
+					bonusTextObject.UpdateText("+1 Life");
+					bonusTextObject.transform.SetParent(bonusSpawner.transform);
 					break;
 				}
 
@@ -66,7 +78,7 @@ namespace Bonus
 
 		private void ResetTime()
 		{
-			Debug.Log("Reset time");
+			Debug.Log("Reset time scale");
 			Time.timeScale = 1f;
 			Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			Destroy(gameObject);

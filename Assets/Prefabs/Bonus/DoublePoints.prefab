@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 4491376904440788272}
   - component: {fileID: 4445123228271083383}
   - component: {fileID: 4700297990483038908}
+  - component: {fileID: 6664158200944175783}
   m_Layer: 0
-  m_Name: DoublePointsBonus
+  m_Name: DoublePoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusType: 0
+  bonusText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
+  bonusSpawner: {fileID: 0}
 --- !u!64 &4491376904440788272
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -143,3 +146,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.007844999, y: 0.014904855, z: 0.017809937}
   m_Center: {x: -0.0000022140146, y: 0.0064937198, z: 0.00802377}
+--- !u!114 &6664158200944175783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133686012828299409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.019177437, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

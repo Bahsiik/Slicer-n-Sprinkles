@@ -2084,6 +2084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806524450}
   - component: {fileID: 806524452}
+  - component: {fileID: 806524453}
   - component: {fileID: 806524451}
   m_Layer: 0
   m_Name: PlayerData
@@ -2137,6 +2138,19 @@ MonoBehaviour:
   lives: 0
   points: 0
   doublePointsActive: 0
+--- !u!114 &806524453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806524449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4734f66f4f0a411a85475180efb84e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textElement: {fileID: 0}
 --- !u!1 &807086636
 GameObject:
   m_ObjectHideFlags: 0

@@ -304,8 +304,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6354738497224621349}
   - component: {fileID: 6354738497773738277}
+  - component: {fileID: -8289690458176891166}
   m_Layer: 0
-  m_Name: SlowTimeBonus
+  m_Name: SlowTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,6 +348,24 @@ MonoBehaviour:
   pointerMinutes: {fileID: 6354738497224822443}
   pointerHours: {fileID: 6354738497224832685}
   clockSpeed: 3
+--- !u!114 &-8289690458176891166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6354738497224842883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.019177437, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6354738497224864793
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusType: 1
+  bonusText: {fileID: -8432124061227106646, guid: c1370ed0135f360438a4dcc3e5758c0f, type: 3}
+  bonusSpawner: {fileID: 0}
 --- !u!54 &5194914755439538616
 Rigidbody:
   m_ObjectHideFlags: 0
