@@ -1,12 +1,13 @@
 using System;
+using AudioSource;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
 	[Header("---Audio Sources---"), SerializeField]
-	private AudioSource musicSource;
+	private UnityEngine.AudioSource musicSource;
 
-	[SerializeField] private AudioSource sfxSource;
+	[SerializeField] private UnityEngine.AudioSource sfxSource;
 
 	[Header("---Audio Clips---"), SerializeField]
 	private Sound[] musicClips;
