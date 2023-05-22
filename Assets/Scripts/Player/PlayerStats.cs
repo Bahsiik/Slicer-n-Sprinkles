@@ -9,14 +9,11 @@ public class PlayerStats : MonoBehaviour
 	public TextUpdater pointsText;
 	public int ingredientsSliced;
 
-	[SerializeField]
-	private int lives;
+	[SerializeField] private int lives;
 
-	[SerializeField]
-	private int points;
+	[SerializeField] private int points;
 
-	[SerializeField]
-	private bool doublePointsActive;
+	[SerializeField] private bool doublePointsActive;
 
 	public static PlayerStats Instance {
 		get {
@@ -38,7 +35,7 @@ public class PlayerStats : MonoBehaviour
 			pointsText.UpdateText(points);
 		}
 	}
-	
+
 	public bool DoublePointsActive {
 		get => doublePointsActive;
 		set => doublePointsActive = value;

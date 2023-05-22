@@ -173,7 +173,7 @@ public class Outline : MonoBehaviour
 			var smoothNormals = SmoothNormals(meshFilter.sharedMesh);
 
 			bakeKeys.Add(meshFilter.sharedMesh);
-			bakeValues.Add(new() {data = smoothNormals});
+			bakeValues.Add(new() { data = smoothNormals });
 		}
 	}
 

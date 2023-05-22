@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayLives : MonoBehaviour
 {
-	private Image[] _hearts;
 	public Sprite fullHeart;
 	public Sprite emptyHeart;
 	public GameObject livesIcons;
+	private Image[] _hearts;
 
 	private void Awake()
 	{
@@ -18,7 +17,7 @@ public class DisplayLives : MonoBehaviour
 			heart.GetComponent<RectTransform>().sizeDelta = new(25, 25);
 			heart.GetComponent<Image>().sprite = fullHeart;
 		}
-		
+
 		_hearts = livesIcons.GetComponentsInChildren<Image>();
 	}
 
