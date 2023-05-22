@@ -1801,7 +1801,7 @@ MonoBehaviour:
   musicClips:
   - soundName: Menu Theme
     clip: {fileID: 8300000, guid: 2cebe5ef59f447d4d803665e3ecf1a2f, type: 3}
-  - soundName: Playboard Theme
+  - soundName: PlayBoard Theme
     clip: {fileID: 8300000, guid: 5d6e42b338547477aa7a88708f894463, type: 3}
   sfxClips:
   - soundName: Bomb
