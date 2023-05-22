@@ -32,7 +32,7 @@ namespace GameOverMenu
 
 			SaveGame.SaveIntoLatestSlot();
 
-			_gameOverText.text = string.Format(_gameOverText.text, PlayerStats.Instance.Points);
+			_gameOverText.text = string.Format(_gameOverText.text, PlayerStats.Instance.Points, PlayerStats.Instance.Points != 1 ? "s" : "");
 			_gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
 
 			if (PlayerStats.Instance.Points <= highScore) _highScoreText.gameObject.SetActive(false);
