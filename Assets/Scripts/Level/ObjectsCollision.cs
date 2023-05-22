@@ -11,6 +11,7 @@ namespace Level
 		public bool isDestroyed;
 		private AudioManager _audioManager;
 		private ParticleSystem _juiceParticleSystem;
+		public Sprite splashSprite;
 
 		private void Awake()
 		{

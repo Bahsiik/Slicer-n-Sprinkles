@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyed: 0
+  splashSprite: {fileID: 21300000, guid: da87ceb3497735248a6a1ac24a5f350f, type: 3}
 --- !u!1 &8868678128921871235
 GameObject:
   m_ObjectHideFlags: 0

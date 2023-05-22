@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Timers;
 using DifficultyMenu;
 using JetBrains.Annotations;
@@ -6,6 +7,7 @@ using PauseMenu;
 using Player;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Blade
 {
@@ -23,6 +25,7 @@ namespace Blade
 		private Camera _mainCamera;
 		private TrailRenderer _trailRenderer;
 		private Vector3 Direction {get; set;}
+		public GameObject uiCanvas;
 
 		private void Awake()
 		{
@@ -76,6 +79,16 @@ namespace Blade
 			_sliceComboTimer.Stop();
 			sliceCombo++;
 			_sliceComboTimer.Start();
+
+			var splash = new GameObject("Splash", typeof(Image));
+			var color = splash.GetComponent<Image>().color;
+			color.a = 0.5f;
+			splash.GetComponent<Image>().color = color;
+			splash.transform.SetParent(uiCanvas.transform);
+			splash.GetComponent<RectTransform>().sizeDelta = new(2.5f, 2.5f);
+			splash.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, -0.5f);
+			splash.GetComponent<Image>().sprite = objectsCollision.splashSprite;
+			StartCoroutine(FadeTo(0f, 5f, splash));
 		}
 
 		private void FinishCombo()
@@ -131,5 +144,18 @@ namespace Blade
 
 			transform.position = newPosition;
 		}
+
+		private IEnumerator FadeTo(float aValue, float aTime, GameObject splash)
+		{
+			float alpha = splash.GetComponent<Image>().color.a;
+			for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+			{
+				Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha,aValue,t));
+				splash.GetComponent<Image>().color = newColor;
+				yield return null;
+			}
+			Destroy(splash);
+		}
+
 	}
 }
